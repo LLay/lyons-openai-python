@@ -1,5 +1,5 @@
 [project]
-name = "openai"
+name = "openaix"
 version = "1.14.1"
 description = "The official Python library for the openai API"
 readme = "README.md"

@@ -98,14 +98,14 @@ class Assistants(SyncAPIResource):
 
         Args:
           model: ID of the model to use. You can use the
-              [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+              [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
               see all of your available models, or see our
-              [Model overview](https://platform.openai.com/docs/models/overview) for
+              [Model overview](https://platform.openaix.com/docs/models/overview) for
               descriptions of them.
 
           description: The description of the assistant. The maximum length is 512 characters.
 
-          file_ids: A list of [file](https://platform.openai.com/docs/api-reference/files) IDs
+          file_ids: A list of [file](https://platform.openaix.com/docs/api-reference/files) IDs
               attached to this assistant. There can be a maximum of 20 files attached to the
               assistant. Files are ordered by their creation date in ascending order.
 
@@ -130,7 +130,8 @@ class Assistants(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._post(
             "/assistants",
             body=maybe_transform(
@@ -175,8 +176,10 @@ class Assistants(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._get(
             f"/assistants/{assistant_id}",
             options=make_request_options(
@@ -210,7 +213,7 @@ class Assistants(SyncAPIResource):
 
         The maximum length is 512 characters.
 
-          file_ids: A list of [File](https://platform.openai.com/docs/api-reference/files) IDs
+          file_ids: A list of [File](https://platform.openaix.com/docs/api-reference/files) IDs
               attached to this assistant. There can be a maximum of 20 files attached to the
               assistant. Files are ordered by their creation date in ascending order. If a
               file was previously attached to the list but does not show up in the list, it
@@ -225,9 +228,9 @@ class Assistants(SyncAPIResource):
               characters long.
 
           model: ID of the model to use. You can use the
-              [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+              [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
               see all of your available models, or see our
-              [Model overview](https://platform.openai.com/docs/models/overview) for
+              [Model overview](https://platform.openaix.com/docs/models/overview) for
               descriptions of them.
 
           name: The name of the assistant. The maximum length is 256 characters.
@@ -244,8 +247,10 @@ class Assistants(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._post(
             f"/assistants/{assistant_id}",
             body=maybe_transform(
@@ -309,7 +314,8 @@ class Assistants(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._get_api_list(
             "/assistants",
             page=SyncCursorPage[Assistant],
@@ -355,8 +361,10 @@ class Assistants(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._delete(
             f"/assistants/{assistant_id}",
             options=make_request_options(
@@ -423,14 +431,14 @@ class AsyncAssistants(AsyncAPIResource):
 
         Args:
           model: ID of the model to use. You can use the
-              [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+              [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
               see all of your available models, or see our
-              [Model overview](https://platform.openai.com/docs/models/overview) for
+              [Model overview](https://platform.openaix.com/docs/models/overview) for
               descriptions of them.
 
           description: The description of the assistant. The maximum length is 512 characters.
 
-          file_ids: A list of [file](https://platform.openai.com/docs/api-reference/files) IDs
+          file_ids: A list of [file](https://platform.openaix.com/docs/api-reference/files) IDs
               attached to this assistant. There can be a maximum of 20 files attached to the
               assistant. Files are ordered by their creation date in ascending order.
 
@@ -455,7 +463,8 @@ class AsyncAssistants(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._post(
             "/assistants",
             body=await async_maybe_transform(
@@ -500,8 +509,10 @@ class AsyncAssistants(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._get(
             f"/assistants/{assistant_id}",
             options=make_request_options(
@@ -535,7 +546,7 @@ class AsyncAssistants(AsyncAPIResource):
 
         The maximum length is 512 characters.
 
-          file_ids: A list of [File](https://platform.openai.com/docs/api-reference/files) IDs
+          file_ids: A list of [File](https://platform.openaix.com/docs/api-reference/files) IDs
               attached to this assistant. There can be a maximum of 20 files attached to the
               assistant. Files are ordered by their creation date in ascending order. If a
               file was previously attached to the list but does not show up in the list, it
@@ -550,9 +561,9 @@ class AsyncAssistants(AsyncAPIResource):
               characters long.
 
           model: ID of the model to use. You can use the
-              [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+              [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
               see all of your available models, or see our
-              [Model overview](https://platform.openai.com/docs/models/overview) for
+              [Model overview](https://platform.openaix.com/docs/models/overview) for
               descriptions of them.
 
           name: The name of the assistant. The maximum length is 256 characters.
@@ -569,8 +580,10 @@ class AsyncAssistants(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._post(
             f"/assistants/{assistant_id}",
             body=await async_maybe_transform(
@@ -634,7 +647,8 @@ class AsyncAssistants(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._get_api_list(
             "/assistants",
             page=AsyncCursorPage[Assistant],
@@ -680,8 +694,10 @@ class AsyncAssistants(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._delete(
             f"/assistants/{assistant_id}",
             options=make_request_options(

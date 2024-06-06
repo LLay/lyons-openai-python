@@ -7,22 +7,24 @@ from typing import Any, cast
 
 import pytest
 
-from openai import OpenAI, AsyncOpenAI
+from openaix import OpenAI, AsyncOpenAI
 from tests.utils import assert_matches_type
-from openai.types import ModerationCreateResponse
+from openaix.types import ModerationCreateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
 class TestModerations:
-    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: OpenAI) -> None:
         moderation = client.moderations.create(
             input="I want to kill them.",
         )
-        assert_matches_type(ModerationCreateResponse, moderation, path=["response"])
+        assert_matches_type(ModerationCreateResponse,
+                            moderation, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: OpenAI) -> None:
@@ -30,7 +32,8 @@ class TestModerations:
             input="I want to kill them.",
             model="text-moderation-stable",
         )
-        assert_matches_type(ModerationCreateResponse, moderation, path=["response"])
+        assert_matches_type(ModerationCreateResponse,
+                            moderation, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: OpenAI) -> None:
@@ -39,9 +42,11 @@ class TestModerations:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         moderation = response.parse()
-        assert_matches_type(ModerationCreateResponse, moderation, path=["response"])
+        assert_matches_type(ModerationCreateResponse,
+                            moderation, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: OpenAI) -> None:
@@ -49,23 +54,27 @@ class TestModerations:
             input="I want to kill them.",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             moderation = response.parse()
-            assert_matches_type(ModerationCreateResponse, moderation, path=["response"])
+            assert_matches_type(ModerationCreateResponse,
+                                moderation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncModerations:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_create(self, async_client: AsyncOpenAI) -> None:
         moderation = await async_client.moderations.create(
             input="I want to kill them.",
         )
-        assert_matches_type(ModerationCreateResponse, moderation, path=["response"])
+        assert_matches_type(ModerationCreateResponse,
+                            moderation, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncOpenAI) -> None:
@@ -73,7 +82,8 @@ class TestAsyncModerations:
             input="I want to kill them.",
             model="text-moderation-stable",
         )
-        assert_matches_type(ModerationCreateResponse, moderation, path=["response"])
+        assert_matches_type(ModerationCreateResponse,
+                            moderation, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOpenAI) -> None:
@@ -82,9 +92,11 @@ class TestAsyncModerations:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         moderation = response.parse()
-        assert_matches_type(ModerationCreateResponse, moderation, path=["response"])
+        assert_matches_type(ModerationCreateResponse,
+                            moderation, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOpenAI) -> None:
@@ -92,9 +104,11 @@ class TestAsyncModerations:
             input="I want to kill them.",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             moderation = await response.parse()
-            assert_matches_type(ModerationCreateResponse, moderation, path=["response"])
+            assert_matches_type(ModerationCreateResponse,
+                                moderation, path=["response"])
 
         assert cast(Any, response.is_closed) is True

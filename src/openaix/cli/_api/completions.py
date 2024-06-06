@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING, Optional, cast
 from argparse import ArgumentParser
 from functools import partial
 
-from openai.types.completion import Completion
+from openaix.types.completion import Completion
 
 from .._utils import get_client
 from ..._types import NOT_GIVEN, NotGivenOr
@@ -30,9 +30,12 @@ def register(subparser: _SubParsersAction[ArgumentParser]) -> None:
     )
 
     # Optional
-    sub.add_argument("-p", "--prompt", help="An optional prompt to complete from")
-    sub.add_argument("--stream", help="Stream tokens as they're ready.", action="store_true")
-    sub.add_argument("-M", "--max-tokens", help="The maximum number of tokens to generate", type=int)
+    sub.add_argument("-p", "--prompt",
+                     help="An optional prompt to complete from")
+    sub.add_argument(
+        "--stream", help="Stream tokens as they're ready.", action="store_true")
+    sub.add_argument("-M", "--max-tokens",
+                     help="The maximum number of tokens to generate", type=int)
     sub.add_argument(
         "-t",
         "--temperature",
@@ -80,14 +83,17 @@ Mutually exclusive with `top_p`.""",
         help="Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.",
         type=float,
     )
-    sub.add_argument("--suffix", help="The suffix that comes after a completion of inserted text.")
-    sub.add_argument("--stop", help="A stop sequence at which to stop generating tokens.")
+    sub.add_argument(
+        "--suffix", help="The suffix that comes after a completion of inserted text.")
+    sub.add_argument(
+        "--stop", help="A stop sequence at which to stop generating tokens.")
     sub.add_argument(
         "--user",
         help="A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.",
     )
     # TODO: add support for logit_bias
-    sub.set_defaults(func=CLICompletions.create, args_model=CLICompletionCreateArgs)
+    sub.set_defaults(func=CLICompletions.create,
+                     args_model=CLICompletionCreateArgs)
 
 
 class CLICompletionCreateArgs(BaseModel):
@@ -113,7 +119,8 @@ class CLICompletions:
     @staticmethod
     def create(args: CLICompletionCreateArgs) -> None:
         if is_given(args.n) and args.n > 1 and args.stream:
-            raise CLIError("Can't stream completions with n>1 with the current CLI")
+            raise CLIError(
+                "Can't stream completions with n>1 with the current CLI")
 
         make_request = partial(
             get_client().completions.create,
@@ -136,7 +143,8 @@ class CLICompletions:
         if args.stream:
             return CLICompletions._stream_create(
                 # mypy doesn't understand the `partial` function but pyright does
-                cast(Stream[Completion], make_request(stream=True))  # pyright: ignore[reportUnnecessaryCast]
+                # pyright: ignore[reportUnnecessaryCast]
+                cast(Stream[Completion], make_request(stream=True))
             )
 
         return CLICompletions._create(make_request())
@@ -146,7 +154,8 @@ class CLICompletions:
         should_print_header = len(completion.choices) > 1
         for choice in completion.choices:
             if should_print_header:
-                sys.stdout.write("===== Completion {} =====\n".format(choice.index))
+                sys.stdout.write(
+                    "===== Completion {} =====\n".format(choice.index))
 
             sys.stdout.write(choice.text)
 
@@ -161,7 +170,8 @@ class CLICompletions:
             should_print_header = len(completion.choices) > 1
             for choice in sorted(completion.choices, key=lambda c: c.index):
                 if should_print_header:
-                    sys.stdout.write("===== Chat Completion {} =====\n".format(choice.index))
+                    sys.stdout.write(
+                        "===== Chat Completion {} =====\n".format(choice.index))
 
                 sys.stdout.write(choice.text)
 

@@ -60,7 +60,5 @@
     }
   ],
   "release-type": "python",
-  "extra-files": [
-    "src/openai/_version.py"
-  ]
+  "extra-files": ["src/openaix/_version.py"]
 }

@@ -48,11 +48,11 @@ class Files(SyncAPIResource):
     ) -> AssistantFile:
         """
         Create an assistant file by attaching a
-        [File](https://platform.openai.com/docs/api-reference/files) to an
-        [assistant](https://platform.openai.com/docs/api-reference/assistants).
+        [File](https://platform.openaix.com/docs/api-reference/files) to an
+        [assistant](https://platform.openaix.com/docs/api-reference/assistants).
 
         Args:
-          file_id: A [File](https://platform.openai.com/docs/api-reference/files) ID (with
+          file_id: A [File](https://platform.openaix.com/docs/api-reference/files) ID (with
               `purpose="assistants"`) that the assistant should use. Useful for tools like
               `retrieval` and `code_interpreter` that can access files.
 
@@ -65,11 +65,14 @@ class Files(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._post(
             f"/assistants/{assistant_id}/files",
-            body=maybe_transform({"file_id": file_id}, file_create_params.FileCreateParams),
+            body=maybe_transform({"file_id": file_id},
+                                 file_create_params.FileCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -101,10 +104,13 @@ class Files(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
         if not file_id:
-            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._get(
             f"/assistants/{assistant_id}/files/{file_id}",
             options=make_request_options(
@@ -157,8 +163,10 @@ class Files(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._get_api_list(
             f"/assistants/{assistant_id}/files",
             page=SyncCursorPage[AssistantFile],
@@ -205,10 +213,13 @@ class Files(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
         if not file_id:
-            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._delete(
             f"/assistants/{assistant_id}/files/{file_id}",
             options=make_request_options(
@@ -241,11 +252,11 @@ class AsyncFiles(AsyncAPIResource):
     ) -> AssistantFile:
         """
         Create an assistant file by attaching a
-        [File](https://platform.openai.com/docs/api-reference/files) to an
-        [assistant](https://platform.openai.com/docs/api-reference/assistants).
+        [File](https://platform.openaix.com/docs/api-reference/files) to an
+        [assistant](https://platform.openaix.com/docs/api-reference/assistants).
 
         Args:
-          file_id: A [File](https://platform.openai.com/docs/api-reference/files) ID (with
+          file_id: A [File](https://platform.openaix.com/docs/api-reference/files) ID (with
               `purpose="assistants"`) that the assistant should use. Useful for tools like
               `retrieval` and `code_interpreter` that can access files.
 
@@ -258,8 +269,10 @@ class AsyncFiles(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._post(
             f"/assistants/{assistant_id}/files",
             body=await async_maybe_transform({"file_id": file_id}, file_create_params.FileCreateParams),
@@ -294,10 +307,13 @@ class AsyncFiles(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
         if not file_id:
-            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._get(
             f"/assistants/{assistant_id}/files/{file_id}",
             options=make_request_options(
@@ -350,8 +366,10 @@ class AsyncFiles(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._get_api_list(
             f"/assistants/{assistant_id}/files",
             page=AsyncCursorPage[AssistantFile],
@@ -398,10 +416,13 @@ class AsyncFiles(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not assistant_id:
-            raise ValueError(f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `assistant_id` but received {assistant_id!r}")
         if not file_id:
-            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._delete(
             f"/assistants/{assistant_id}/files/{file_id}",
             options=make_request_options(

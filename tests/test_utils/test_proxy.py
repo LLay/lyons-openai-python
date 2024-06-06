@@ -2,7 +2,7 @@ import operator
 from typing import Any
 from typing_extensions import override
 
-from openai._utils import LazyProxy
+from openaix._utils import LazyProxy
 
 
 class RecursiveLazyProxy(LazyProxy[Any]):
@@ -20,4 +20,5 @@ def test_recursive_proxy() -> None:
     assert str(proxy) == "RecursiveLazyProxy"
     assert dir(proxy) == []
     assert type(proxy).__name__ == "RecursiveLazyProxy"
-    assert type(operator.attrgetter("name.foo.bar.baz")(proxy)).__name__ == "RecursiveLazyProxy"
+    assert type(operator.attrgetter("name.foo.bar.baz")
+                (proxy)).__name__ == "RecursiveLazyProxy"

@@ -26,7 +26,7 @@ class ThreadCreateAndRunParamsBase(TypedDict, total=False):
     assistant_id: Required[str]
     """
     The ID of the
-    [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+    [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
     execute this run.
     """
 
@@ -87,7 +87,7 @@ class ThreadCreateAndRunParamsBase(TypedDict, total=False):
         None,
     ]
     """
-    The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+    The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
     be used to execute this run. If a value is provided here, it will override the
     model associated with the assistant. If not, the model associated with the
     assistant will be used.
@@ -97,7 +97,7 @@ class ThreadCreateAndRunParamsBase(TypedDict, total=False):
     """Specifies the format that the model must output.
 
     Compatible with
-    [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+    [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
     all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
     Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -156,7 +156,7 @@ class ThreadMessage(TypedDict, total=False):
 
     file_ids: List[str]
     """
-    A list of [File](https://platform.openai.com/docs/api-reference/files) IDs that
+    A list of [File](https://platform.openaix.com/docs/api-reference/files) IDs that
     the message should use. There can be a maximum of 10 files attached to a
     message. Useful for tools like `retrieval` and `code_interpreter` that can
     access and use files.
@@ -174,7 +174,7 @@ class ThreadMessage(TypedDict, total=False):
 class Thread(TypedDict, total=False):
     messages: Iterable[ThreadMessage]
     """
-    A list of [messages](https://platform.openai.com/docs/api-reference/messages) to
+    A list of [messages](https://platform.openaix.com/docs/api-reference/messages) to
     start the thread with.
     """
 
@@ -225,4 +225,5 @@ class ThreadCreateAndRunParamsStreaming(ThreadCreateAndRunParamsBase):
     """
 
 
-ThreadCreateAndRunParams = Union[ThreadCreateAndRunParamsNonStreaming, ThreadCreateAndRunParamsStreaming]
+ThreadCreateAndRunParams = Union[ThreadCreateAndRunParamsNonStreaming,
+                                 ThreadCreateAndRunParamsStreaming]

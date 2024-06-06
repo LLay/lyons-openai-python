@@ -7,15 +7,16 @@ from typing import Any, cast
 
 import pytest
 
-from openai import OpenAI, AsyncOpenAI
+from openaix import OpenAI, AsyncOpenAI
 from tests.utils import assert_matches_type
-from openai.types import ImagesResponse
+from openaix.types import ImagesResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
 class TestImages:
-    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create_variation(self, client: OpenAI) -> None:
@@ -43,7 +44,8 @@ class TestImages:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         image = response.parse()
         assert_matches_type(ImagesResponse, image, path=["response"])
 
@@ -53,7 +55,8 @@ class TestImages:
             image=b"raw file contents",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             image = response.parse()
             assert_matches_type(ImagesResponse, image, path=["response"])
@@ -90,7 +93,8 @@ class TestImages:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         image = response.parse()
         assert_matches_type(ImagesResponse, image, path=["response"])
 
@@ -101,7 +105,8 @@ class TestImages:
             prompt="A cute baby sea otter wearing a beret",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             image = response.parse()
             assert_matches_type(ImagesResponse, image, path=["response"])
@@ -136,7 +141,8 @@ class TestImages:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         image = response.parse()
         assert_matches_type(ImagesResponse, image, path=["response"])
 
@@ -146,7 +152,8 @@ class TestImages:
             prompt="A cute baby sea otter",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             image = response.parse()
             assert_matches_type(ImagesResponse, image, path=["response"])
@@ -155,7 +162,8 @@ class TestImages:
 
 
 class TestAsyncImages:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_create_variation(self, async_client: AsyncOpenAI) -> None:
@@ -183,7 +191,8 @@ class TestAsyncImages:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         image = response.parse()
         assert_matches_type(ImagesResponse, image, path=["response"])
 
@@ -193,7 +202,8 @@ class TestAsyncImages:
             image=b"raw file contents",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             image = await response.parse()
             assert_matches_type(ImagesResponse, image, path=["response"])
@@ -230,7 +240,8 @@ class TestAsyncImages:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         image = response.parse()
         assert_matches_type(ImagesResponse, image, path=["response"])
 
@@ -241,7 +252,8 @@ class TestAsyncImages:
             prompt="A cute baby sea otter wearing a beret",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             image = await response.parse()
             assert_matches_type(ImagesResponse, image, path=["response"])
@@ -276,7 +288,8 @@ class TestAsyncImages:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         image = response.parse()
         assert_matches_type(ImagesResponse, image, path=["response"])
 
@@ -286,7 +299,8 @@ class TestAsyncImages:
             prompt="A cute baby sea otter",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             image = await response.parse()
             assert_matches_type(ImagesResponse, image, path=["response"])

@@ -23,7 +23,7 @@ def register(subparser: _SubParsersAction[ArgumentParser]) -> None:
     sub.add_argument(
         "-p",
         "--purpose",
-        help="Why are you uploading this file? (see https://platform.openai.com/docs/api-reference/ for purposes)",
+        help="Why are you uploading this file? (see https://platform.openaix.com/docs/api-reference/ for purposes)",
         required=True,
     )
     sub.set_defaults(func=CLIFile.create, args_model=CLIFileCreateArgs)
@@ -53,7 +53,8 @@ class CLIFile:
     @staticmethod
     def create(args: CLIFileCreateArgs) -> None:
         with open(args.file, "rb") as file_reader:
-            buffer_reader = BufferReader(file_reader.read(), desc="Upload progress")
+            buffer_reader = BufferReader(
+                file_reader.read(), desc="Upload progress")
 
         file = get_client().files.create(
             file=(args.file, buffer_reader),

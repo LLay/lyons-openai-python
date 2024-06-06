@@ -45,7 +45,8 @@ if TYPE_CHECKING:
     FileContent = Union[IO[bytes], bytes, PathLike[str]]
 else:
     Base64FileInput = Union[IO[bytes], PathLike]
-    FileContent = Union[IO[bytes], bytes, PathLike]  # PathLike is not subscriptable in Python 3.8.
+    # PathLike is not subscriptable in Python 3.8.
+    FileContent = Union[IO[bytes], bytes, PathLike]
 FileTypes = Union[
     # file (or bytes)
     FileContent,
@@ -70,7 +71,8 @@ HttpxFileTypes = Union[
     # (filename, file (or bytes), content_type, headers)
     Tuple[Optional[str], HttpxFileContent, Optional[str], Mapping[str, str]],
 ]
-HttpxRequestFiles = Union[Mapping[str, HttpxFileTypes], Sequence[Tuple[str, HttpxFileTypes]]]
+HttpxRequestFiles = Union[Mapping[str, HttpxFileTypes],
+                          Sequence[Tuple[str, HttpxFileTypes]]]
 
 # Workaround to support (cast_to: Type[ResponseT]) -> ResponseT
 # where ResponseT includes `None`. In order to support directly
@@ -82,7 +84,7 @@ HttpxRequestFiles = Union[Mapping[str, HttpxFileTypes], Sequence[Tuple[str, Http
 # This unfortunately means that you will either have
 # to import this type and pass it explicitly:
 #
-# from openaix import NoneType
+# from openaixx import NoneType
 # client.get('/foo', cast_to=NoneType)
 #
 # or build it yourself:

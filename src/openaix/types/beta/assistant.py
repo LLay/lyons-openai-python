@@ -21,7 +21,7 @@ class Assistant(BaseModel):
 
     file_ids: List[str]
     """
-    A list of [file](https://platform.openai.com/docs/api-reference/files) IDs
+    A list of [file](https://platform.openaix.com/docs/api-reference/files) IDs
     attached to this assistant. There can be a maximum of 20 files attached to the
     assistant. Files are ordered by their creation date in ascending order.
     """
@@ -44,9 +44,9 @@ class Assistant(BaseModel):
     """ID of the model to use.
 
     You can use the
-    [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+    [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
     see all of your available models, or see our
-    [Model overview](https://platform.openai.com/docs/models/overview) for
+    [Model overview](https://platform.openaix.com/docs/models/overview) for
     descriptions of them.
     """
 

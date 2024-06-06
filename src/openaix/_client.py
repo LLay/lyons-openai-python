@@ -117,7 +117,7 @@ class OpenAI(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("OPENAI_BASE_URL")
         if base_url is None:
-            base_url = f"https://api.openai.com/v1"
+            base_url = f"https://api.openaix.com/v1"
 
         super().__init__(
             version=__version__,
@@ -188,10 +188,12 @@ class OpenAI(SyncAPIClient):
         Create a new client instance re-using the same options given to the current client with optional overriding.
         """
         if default_headers is not None and set_default_headers is not None:
-            raise ValueError("The `default_headers` and `set_default_headers` arguments are mutually exclusive")
+            raise ValueError(
+                "The `default_headers` and `set_default_headers` arguments are mutually exclusive")
 
         if default_query is not None and set_default_query is not None:
-            raise ValueError("The `default_query` and `set_default_query` arguments are mutually exclusive")
+            raise ValueError(
+                "The `default_query` and `set_default_query` arguments are mutually exclusive")
 
         headers = self._custom_headers
         if default_headers is not None:
@@ -213,7 +215,8 @@ class OpenAI(SyncAPIClient):
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
-            max_retries=max_retries if is_given(max_retries) else self.max_retries,
+            max_retries=max_retries if is_given(
+                max_retries) else self.max_retries,
             default_headers=headers,
             default_query=params,
             **_extra_kwargs,
@@ -329,7 +332,7 @@ class AsyncOpenAI(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("OPENAI_BASE_URL")
         if base_url is None:
-            base_url = f"https://api.openai.com/v1"
+            base_url = f"https://api.openaix.com/v1"
 
         super().__init__(
             version=__version__,
@@ -400,10 +403,12 @@ class AsyncOpenAI(AsyncAPIClient):
         Create a new client instance re-using the same options given to the current client with optional overriding.
         """
         if default_headers is not None and set_default_headers is not None:
-            raise ValueError("The `default_headers` and `set_default_headers` arguments are mutually exclusive")
+            raise ValueError(
+                "The `default_headers` and `set_default_headers` arguments are mutually exclusive")
 
         if default_query is not None and set_default_query is not None:
-            raise ValueError("The `default_query` and `set_default_query` arguments are mutually exclusive")
+            raise ValueError(
+                "The `default_query` and `set_default_query` arguments are mutually exclusive")
 
         headers = self._custom_headers
         if default_headers is not None:
@@ -425,7 +430,8 @@ class AsyncOpenAI(AsyncAPIClient):
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
-            max_retries=max_retries if is_given(max_retries) else self.max_retries,
+            max_retries=max_retries if is_given(
+                max_retries) else self.max_retries,
             default_headers=headers,
             default_query=params,
             **_extra_kwargs,
@@ -472,62 +478,79 @@ class AsyncOpenAI(AsyncAPIClient):
 
 class OpenAIWithRawResponse:
     def __init__(self, client: OpenAI) -> None:
-        self.completions = resources.CompletionsWithRawResponse(client.completions)
+        self.completions = resources.CompletionsWithRawResponse(
+            client.completions)
         self.chat = resources.ChatWithRawResponse(client.chat)
-        self.embeddings = resources.EmbeddingsWithRawResponse(client.embeddings)
+        self.embeddings = resources.EmbeddingsWithRawResponse(
+            client.embeddings)
         self.files = resources.FilesWithRawResponse(client.files)
         self.images = resources.ImagesWithRawResponse(client.images)
         self.audio = resources.AudioWithRawResponse(client.audio)
-        self.moderations = resources.ModerationsWithRawResponse(client.moderations)
+        self.moderations = resources.ModerationsWithRawResponse(
+            client.moderations)
         self.models = resources.ModelsWithRawResponse(client.models)
-        self.fine_tuning = resources.FineTuningWithRawResponse(client.fine_tuning)
+        self.fine_tuning = resources.FineTuningWithRawResponse(
+            client.fine_tuning)
         self.beta = resources.BetaWithRawResponse(client.beta)
         self.batches = resources.BatchesWithRawResponse(client.batches)
 
 
 class AsyncOpenAIWithRawResponse:
     def __init__(self, client: AsyncOpenAI) -> None:
-        self.completions = resources.AsyncCompletionsWithRawResponse(client.completions)
+        self.completions = resources.AsyncCompletionsWithRawResponse(
+            client.completions)
         self.chat = resources.AsyncChatWithRawResponse(client.chat)
-        self.embeddings = resources.AsyncEmbeddingsWithRawResponse(client.embeddings)
+        self.embeddings = resources.AsyncEmbeddingsWithRawResponse(
+            client.embeddings)
         self.files = resources.AsyncFilesWithRawResponse(client.files)
         self.images = resources.AsyncImagesWithRawResponse(client.images)
         self.audio = resources.AsyncAudioWithRawResponse(client.audio)
-        self.moderations = resources.AsyncModerationsWithRawResponse(client.moderations)
+        self.moderations = resources.AsyncModerationsWithRawResponse(
+            client.moderations)
         self.models = resources.AsyncModelsWithRawResponse(client.models)
-        self.fine_tuning = resources.AsyncFineTuningWithRawResponse(client.fine_tuning)
+        self.fine_tuning = resources.AsyncFineTuningWithRawResponse(
+            client.fine_tuning)
         self.beta = resources.AsyncBetaWithRawResponse(client.beta)
         self.batches = resources.AsyncBatchesWithRawResponse(client.batches)
 
 
 class OpenAIWithStreamedResponse:
     def __init__(self, client: OpenAI) -> None:
-        self.completions = resources.CompletionsWithStreamingResponse(client.completions)
+        self.completions = resources.CompletionsWithStreamingResponse(
+            client.completions)
         self.chat = resources.ChatWithStreamingResponse(client.chat)
-        self.embeddings = resources.EmbeddingsWithStreamingResponse(client.embeddings)
+        self.embeddings = resources.EmbeddingsWithStreamingResponse(
+            client.embeddings)
         self.files = resources.FilesWithStreamingResponse(client.files)
         self.images = resources.ImagesWithStreamingResponse(client.images)
         self.audio = resources.AudioWithStreamingResponse(client.audio)
-        self.moderations = resources.ModerationsWithStreamingResponse(client.moderations)
+        self.moderations = resources.ModerationsWithStreamingResponse(
+            client.moderations)
         self.models = resources.ModelsWithStreamingResponse(client.models)
-        self.fine_tuning = resources.FineTuningWithStreamingResponse(client.fine_tuning)
+        self.fine_tuning = resources.FineTuningWithStreamingResponse(
+            client.fine_tuning)
         self.beta = resources.BetaWithStreamingResponse(client.beta)
         self.batches = resources.BatchesWithStreamingResponse(client.batches)
 
 
 class AsyncOpenAIWithStreamedResponse:
     def __init__(self, client: AsyncOpenAI) -> None:
-        self.completions = resources.AsyncCompletionsWithStreamingResponse(client.completions)
+        self.completions = resources.AsyncCompletionsWithStreamingResponse(
+            client.completions)
         self.chat = resources.AsyncChatWithStreamingResponse(client.chat)
-        self.embeddings = resources.AsyncEmbeddingsWithStreamingResponse(client.embeddings)
+        self.embeddings = resources.AsyncEmbeddingsWithStreamingResponse(
+            client.embeddings)
         self.files = resources.AsyncFilesWithStreamingResponse(client.files)
         self.images = resources.AsyncImagesWithStreamingResponse(client.images)
         self.audio = resources.AsyncAudioWithStreamingResponse(client.audio)
-        self.moderations = resources.AsyncModerationsWithStreamingResponse(client.moderations)
+        self.moderations = resources.AsyncModerationsWithStreamingResponse(
+            client.moderations)
         self.models = resources.AsyncModelsWithStreamingResponse(client.models)
-        self.fine_tuning = resources.AsyncFineTuningWithStreamingResponse(client.fine_tuning)
+        self.fine_tuning = resources.AsyncFineTuningWithStreamingResponse(
+            client.fine_tuning)
         self.beta = resources.AsyncBetaWithStreamingResponse(client.beta)
-        self.batches = resources.AsyncBatchesWithStreamingResponse(client.batches)
+        self.batches = resources.AsyncBatchesWithStreamingResponse(
+            client.batches)
 
 
 Client = OpenAI

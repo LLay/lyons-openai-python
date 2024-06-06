@@ -59,7 +59,7 @@ class Batches(SyncAPIResource):
 
           input_file_id: The ID of an uploaded file that contains requests for the new batch.
 
-              See [upload file](https://platform.openai.com/docs/api-reference/files/create)
+              See [upload file](https://platform.openaix.com/docs/api-reference/files/create)
               for how to upload a file.
 
               Your input file must be formatted as a JSONL file, and must be uploaded with the
@@ -116,7 +116,8 @@ class Batches(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not batch_id:
-            raise ValueError(f"Expected a non-empty value for `batch_id` but received {batch_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `batch_id` but received {batch_id!r}")
         return self._get(
             f"/batches/{batch_id}",
             options=make_request_options(
@@ -149,7 +150,8 @@ class Batches(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not batch_id:
-            raise ValueError(f"Expected a non-empty value for `batch_id` but received {batch_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `batch_id` but received {batch_id!r}")
         return self._post(
             f"/batches/{batch_id}/cancel",
             options=make_request_options(
@@ -194,7 +196,7 @@ class AsyncBatches(AsyncAPIResource):
 
           input_file_id: The ID of an uploaded file that contains requests for the new batch.
 
-              See [upload file](https://platform.openai.com/docs/api-reference/files/create)
+              See [upload file](https://platform.openaix.com/docs/api-reference/files/create)
               for how to upload a file.
 
               Your input file must be formatted as a JSONL file, and must be uploaded with the
@@ -251,7 +253,8 @@ class AsyncBatches(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not batch_id:
-            raise ValueError(f"Expected a non-empty value for `batch_id` but received {batch_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `batch_id` but received {batch_id!r}")
         return await self._get(
             f"/batches/{batch_id}",
             options=make_request_options(
@@ -284,7 +287,8 @@ class AsyncBatches(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not batch_id:
-            raise ValueError(f"Expected a non-empty value for `batch_id` but received {batch_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `batch_id` but received {batch_id!r}")
         return await self._post(
             f"/batches/{batch_id}/cancel",
             options=make_request_options(

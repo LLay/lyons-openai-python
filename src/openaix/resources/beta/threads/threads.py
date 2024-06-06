@@ -96,7 +96,7 @@ class Threads(SyncAPIResource):
         Create a thread.
 
         Args:
-          messages: A list of [messages](https://platform.openai.com/docs/api-reference/messages) to
+          messages: A list of [messages](https://platform.openaix.com/docs/api-reference/messages) to
               start the thread with.
 
           metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful
@@ -112,7 +112,8 @@ class Threads(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._post(
             "/threads",
             body=maybe_transform(
@@ -152,8 +153,10 @@ class Threads(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._get(
             f"/threads/{thread_id}",
             options=make_request_options(
@@ -192,11 +195,14 @@ class Threads(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._post(
             f"/threads/{thread_id}",
-            body=maybe_transform({"metadata": metadata}, thread_update_params.ThreadUpdateParams),
+            body=maybe_transform({"metadata": metadata},
+                                 thread_update_params.ThreadUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -227,8 +233,10 @@ class Threads(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._delete(
             f"/threads/{thread_id}",
             options=make_request_options(
@@ -276,7 +284,8 @@ class Threads(SyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -290,7 +299,7 @@ class Threads(SyncAPIResource):
 
         Args:
           assistant_id: The ID of the
-              [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+              [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
               execute this run.
 
           instructions: Override the default system message of the assistant. This is useful for
@@ -313,13 +322,13 @@ class Threads(SyncAPIResource):
               can be a maximum of 64 characters long and values can be a maxium of 512
               characters long.
 
-          model: The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+          model: The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
               be used to execute this run. If a value is provided here, it will override the
               model associated with the assistant. If not, the model associated with the
               assistant will be used.
 
           response_format: Specifies the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -402,7 +411,8 @@ class Threads(SyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -416,7 +426,7 @@ class Threads(SyncAPIResource):
 
         Args:
           assistant_id: The ID of the
-              [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+              [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
               execute this run.
 
           stream: If `true`, returns a stream of events that happen during the Run as server-sent
@@ -443,13 +453,13 @@ class Threads(SyncAPIResource):
               can be a maximum of 64 characters long and values can be a maxium of 512
               characters long.
 
-          model: The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+          model: The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
               be used to execute this run. If a value is provided here, it will override the
               model associated with the assistant. If not, the model associated with the
               assistant will be used.
 
           response_format: Specifies the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -528,7 +538,8 @@ class Threads(SyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -542,7 +553,7 @@ class Threads(SyncAPIResource):
 
         Args:
           assistant_id: The ID of the
-              [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+              [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
               execute this run.
 
           stream: If `true`, returns a stream of events that happen during the Run as server-sent
@@ -569,13 +580,13 @@ class Threads(SyncAPIResource):
               can be a maximum of 64 characters long and values can be a maxium of 512
               characters long.
 
-          model: The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+          model: The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
               be used to execute this run. If a value is provided here, it will override the
               model associated with the assistant. If not, the model associated with the
               assistant will be used.
 
           response_format: Specifies the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -650,11 +661,13 @@ class Threads(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         response_format: Optional[AssistantResponseFormatOptionParam] | NotGiven = NOT_GIVEN,
-        stream: Optional[Literal[False]] | Literal[True] | NotGiven = NOT_GIVEN,
+        stream: Optional[Literal[False]
+                         ] | Literal[True] | NotGiven = NOT_GIVEN,
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -663,7 +676,8 @@ class Threads(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Run | Stream[AssistantStreamEvent]:
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._post(
             "/threads/runs",
             body=maybe_transform(
@@ -729,7 +743,8 @@ class Threads(SyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         poll_interval_ms: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -742,7 +757,7 @@ class Threads(SyncAPIResource):
         """
         A helper to create a thread, start a run and then poll for a terminal state.
         More information on Run lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
         run = self.create_and_run(
             assistant_id=assistant_id,
@@ -803,7 +818,8 @@ class Threads(SyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -853,7 +869,8 @@ class Threads(SyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         event_handler: AssistantEventHandlerT,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -903,7 +920,8 @@ class Threads(SyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         event_handler: AssistantEventHandlerT | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -984,7 +1002,7 @@ class AsyncThreads(AsyncAPIResource):
         Create a thread.
 
         Args:
-          messages: A list of [messages](https://platform.openai.com/docs/api-reference/messages) to
+          messages: A list of [messages](https://platform.openaix.com/docs/api-reference/messages) to
               start the thread with.
 
           metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful
@@ -1000,7 +1018,8 @@ class AsyncThreads(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._post(
             "/threads",
             body=await async_maybe_transform(
@@ -1040,8 +1059,10 @@ class AsyncThreads(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._get(
             f"/threads/{thread_id}",
             options=make_request_options(
@@ -1080,8 +1101,10 @@ class AsyncThreads(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._post(
             f"/threads/{thread_id}",
             body=await async_maybe_transform({"metadata": metadata}, thread_update_params.ThreadUpdateParams),
@@ -1115,8 +1138,10 @@ class AsyncThreads(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._delete(
             f"/threads/{thread_id}",
             options=make_request_options(
@@ -1164,7 +1189,8 @@ class AsyncThreads(AsyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1178,7 +1204,7 @@ class AsyncThreads(AsyncAPIResource):
 
         Args:
           assistant_id: The ID of the
-              [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+              [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
               execute this run.
 
           instructions: Override the default system message of the assistant. This is useful for
@@ -1201,13 +1227,13 @@ class AsyncThreads(AsyncAPIResource):
               can be a maximum of 64 characters long and values can be a maxium of 512
               characters long.
 
-          model: The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+          model: The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
               be used to execute this run. If a value is provided here, it will override the
               model associated with the assistant. If not, the model associated with the
               assistant will be used.
 
           response_format: Specifies the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1290,7 +1316,8 @@ class AsyncThreads(AsyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1304,7 +1331,7 @@ class AsyncThreads(AsyncAPIResource):
 
         Args:
           assistant_id: The ID of the
-              [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+              [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
               execute this run.
 
           stream: If `true`, returns a stream of events that happen during the Run as server-sent
@@ -1331,13 +1358,13 @@ class AsyncThreads(AsyncAPIResource):
               can be a maximum of 64 characters long and values can be a maxium of 512
               characters long.
 
-          model: The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+          model: The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
               be used to execute this run. If a value is provided here, it will override the
               model associated with the assistant. If not, the model associated with the
               assistant will be used.
 
           response_format: Specifies the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1416,7 +1443,8 @@ class AsyncThreads(AsyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1430,7 +1458,7 @@ class AsyncThreads(AsyncAPIResource):
 
         Args:
           assistant_id: The ID of the
-              [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+              [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
               execute this run.
 
           stream: If `true`, returns a stream of events that happen during the Run as server-sent
@@ -1457,13 +1485,13 @@ class AsyncThreads(AsyncAPIResource):
               can be a maximum of 64 characters long and values can be a maxium of 512
               characters long.
 
-          model: The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+          model: The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
               be used to execute this run. If a value is provided here, it will override the
               model associated with the assistant. If not, the model associated with the
               assistant will be used.
 
           response_format: Specifies the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1538,11 +1566,13 @@ class AsyncThreads(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         response_format: Optional[AssistantResponseFormatOptionParam] | NotGiven = NOT_GIVEN,
-        stream: Optional[Literal[False]] | Literal[True] | NotGiven = NOT_GIVEN,
+        stream: Optional[Literal[False]
+                         ] | Literal[True] | NotGiven = NOT_GIVEN,
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1551,7 +1581,8 @@ class AsyncThreads(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Run | AsyncStream[AssistantStreamEvent]:
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._post(
             "/threads/runs",
             body=await async_maybe_transform(
@@ -1617,7 +1648,8 @@ class AsyncThreads(AsyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         poll_interval_ms: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1630,7 +1662,7 @@ class AsyncThreads(AsyncAPIResource):
         """
         A helper to create a thread, start a run and then poll for a terminal state.
         More information on Run lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
         run = await self.create_and_run(
             assistant_id=assistant_id,
@@ -1693,7 +1725,8 @@ class AsyncThreads(AsyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1743,7 +1776,8 @@ class AsyncThreads(AsyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         event_handler: AsyncAssistantEventHandlerT,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1793,7 +1827,8 @@ class AsyncThreads(AsyncAPIResource):
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         thread: thread_create_and_run_params.Thread | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[thread_create_and_run_params.Tool]] | NotGiven = NOT_GIVEN,
+        tools: Optional[Iterable[thread_create_and_run_params.Tool]
+                        ] | NotGiven = NOT_GIVEN,
         truncation_strategy: Optional[thread_create_and_run_params.TruncationStrategy] | NotGiven = NOT_GIVEN,
         event_handler: AsyncAssistantEventHandlerT | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

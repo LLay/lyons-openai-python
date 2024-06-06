@@ -2,7 +2,7 @@
 
 import asyncio
 
-from openai import OpenAI, AsyncOpenAI
+from openaix import OpenAI, AsyncOpenAI
 
 # This script assumes you have the OPENAI_API_KEY environment variable set to a valid OpenAI API key.
 #

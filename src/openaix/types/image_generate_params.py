@@ -39,7 +39,8 @@ class ImageGenerateParams(TypedDict, total=False):
     image has been generated.
     """
 
-    size: Optional[Literal["256x256", "512x512", "1024x1024", "1792x1024", "1024x1792"]]
+    size: Optional[Literal["256x256", "512x512",
+                           "1024x1024", "1792x1024", "1024x1792"]]
     """The size of the generated images.
 
     Must be one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`. Must be one
@@ -59,5 +60,5 @@ class ImageGenerateParams(TypedDict, total=False):
     """
     A unique identifier representing your end-user, which can help OpenAI to monitor
     and detect abuse.
-    [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+    [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
     """

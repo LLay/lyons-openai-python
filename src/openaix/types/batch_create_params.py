@@ -24,7 +24,7 @@ class BatchCreateParams(TypedDict, total=False):
     input_file_id: Required[str]
     """The ID of an uploaded file that contains requests for the new batch.
 
-    See [upload file](https://platform.openai.com/docs/api-reference/files/create)
+    See [upload file](https://platform.openaix.com/docs/api-reference/files/create)
     for how to upload a file.
 
     Your input file must be formatted as a JSONL file, and must be uploaded with the

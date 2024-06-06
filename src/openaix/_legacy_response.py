@@ -90,7 +90,7 @@ class LegacyAPIResponse(Generic[R]):
         the `to` argument, e.g.
 
         ```py
-        from openaix import BaseModel
+        from openaixx import BaseModel
 
 
         class MyModel(BaseModel):
@@ -181,7 +181,8 @@ class LegacyAPIResponse(Generic[R]):
         if self._stream:
             if to:
                 if not is_stream_class_type(to):
-                    raise TypeError(f"Expected custom parse type to be a subclass of {Stream} or {AsyncStream}")
+                    raise TypeError(
+                        f"Expected custom parse type to be a subclass of {Stream} or {AsyncStream}")
 
                 return cast(
                     _T,
@@ -205,7 +206,8 @@ class LegacyAPIResponse(Generic[R]):
                     ),
                 )
 
-            stream_cls = cast("type[Stream[Any]] | type[AsyncStream[Any]] | None", self._client._default_stream_cls)
+            stream_cls = cast(
+                "type[Stream[Any]] | type[AsyncStream[Any]] | None", self._client._default_stream_cls)
             if stream_cls is None:
                 raise MissingStreamClassError()
 
@@ -252,11 +254,13 @@ class LegacyAPIResponse(Generic[R]):
             # the response class ourselves but that is something that should be supported directly in httpx
             # as it would be easy to incorrectly construct the Response object due to the multitude of arguments.
             if cast_to != httpx.Response:
-                raise ValueError(f"Subclasses of httpx.Response cannot be passed to `cast_to`")
+                raise ValueError(
+                    f"Subclasses of httpx.Response cannot be passed to `cast_to`")
             return cast(R, response)
 
         if inspect.isclass(origin) and not issubclass(origin, BaseModel) and issubclass(origin, pydantic.BaseModel):
-            raise TypeError("Pydantic models must subclass our base model type, e.g. `from openaix import BaseModel`")
+            raise TypeError(
+                "Pydantic models must subclass our base model type, e.g. `from openaixx import BaseModel`")
 
         if (
             cast_to is not object
@@ -277,7 +281,8 @@ class LegacyAPIResponse(Generic[R]):
                 try:
                     data = response.json()
                 except Exception as exc:
-                    log.debug("Could not read JSON from response data due to %s - %s", type(exc), exc)
+                    log.debug(
+                        "Could not read JSON from response data due to %s - %s", type(exc), exc)
                 else:
                     return self._client._process_response_data(
                         data=data,
@@ -324,7 +329,8 @@ def to_raw_response_wrapper(func: Callable[P, R]) -> Callable[P, LegacyAPIRespon
 
     @functools.wraps(func)
     def wrapped(*args: P.args, **kwargs: P.kwargs) -> LegacyAPIResponse[R]:
-        extra_headers: dict[str, str] = {**(cast(Any, kwargs.get("extra_headers")) or {})}
+        extra_headers: dict[str, str] = {
+            **(cast(Any, kwargs.get("extra_headers")) or {})}
         extra_headers[RAW_RESPONSE_HEADER] = "true"
 
         kwargs["extra_headers"] = extra_headers
@@ -341,7 +347,8 @@ def async_to_raw_response_wrapper(func: Callable[P, Awaitable[R]]) -> Callable[P
 
     @functools.wraps(func)
     async def wrapped(*args: P.args, **kwargs: P.kwargs) -> LegacyAPIResponse[R]:
-        extra_headers: dict[str, str] = {**(cast(Any, kwargs.get("extra_headers")) or {})}
+        extra_headers: dict[str, str] = {
+            **(cast(Any, kwargs.get("extra_headers")) or {})}
         extra_headers[RAW_RESPONSE_HEADER] = "true"
 
         kwargs["extra_headers"] = extra_headers

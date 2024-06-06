@@ -65,11 +65,11 @@ class Files(SyncAPIResource):
 
         The size of individual files can be a maximum of 512 MB or 2 million tokens for
         Assistants. See the
-        [Assistants Tools guide](https://platform.openai.com/docs/assistants/tools) to
+        [Assistants Tools guide](https://platform.openaix.com/docs/assistants/tools) to
         learn more about the types of files supported. The Fine-tuning API only supports
         `.jsonl` files.
 
-        Please [contact us](https://help.openai.com/) if you need to increase these
+        Please [contact us](https://help.openaix.com/) if you need to increase these
         storage limits.
 
         Args:
@@ -78,10 +78,10 @@ class Files(SyncAPIResource):
           purpose: The intended purpose of the uploaded file.
 
               Use "fine-tune" for
-              [Fine-tuning](https://platform.openai.com/docs/api-reference/fine-tuning) and
+              [Fine-tuning](https://platform.openaix.com/docs/api-reference/fine-tuning) and
               "assistants" for
-              [Assistants](https://platform.openai.com/docs/api-reference/assistants) and
-              [Messages](https://platform.openai.com/docs/api-reference/messages). This allows
+              [Assistants](https://platform.openaix.com/docs/api-reference/assistants) and
+              [Messages](https://platform.openaix.com/docs/api-reference/messages). This allows
               us to validate the format of the uploaded file is correct for fine-tuning.
 
           extra_headers: Send extra headers
@@ -98,12 +98,14 @@ class Files(SyncAPIResource):
                 "purpose": purpose,
             }
         )
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        files = extract_files(
+            cast(Mapping[str, object], body), paths=[["file"]])
         if files:
             # It should be noted that the actual Content-Type header that will be
             # sent to the server will contain a `boundary` parameter, e.g.
             # multipart/form-data; boundary=---abc--
-            extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+            extra_headers = {
+                "Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
             "/files",
             body=maybe_transform(body, file_create_params.FileCreateParams),
@@ -138,7 +140,8 @@ class Files(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not file_id:
-            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `file_id` but received {file_id!r}")
         return self._get(
             f"/files/{file_id}",
             options=make_request_options(
@@ -180,7 +183,8 @@ class Files(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"purpose": purpose}, file_list_params.FileListParams),
+                query=maybe_transform(
+                    {"purpose": purpose}, file_list_params.FileListParams),
             ),
             model=FileObject,
         )
@@ -209,7 +213,8 @@ class Files(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not file_id:
-            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `file_id` but received {file_id!r}")
         return self._delete(
             f"/files/{file_id}",
             options=make_request_options(
@@ -242,8 +247,10 @@ class Files(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not file_id:
-            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
-        extra_headers = {"Accept": "application/binary", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        extra_headers = {"Accept": "application/binary",
+                         **(extra_headers or {})}
         return self._get(
             f"/files/{file_id}/content",
             options=make_request_options(
@@ -277,7 +284,8 @@ class Files(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not file_id:
-            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `file_id` but received {file_id!r}")
         return self._get(
             f"/files/{file_id}/content",
             options=make_request_options(
@@ -338,11 +346,11 @@ class AsyncFiles(AsyncAPIResource):
 
         The size of individual files can be a maximum of 512 MB or 2 million tokens for
         Assistants. See the
-        [Assistants Tools guide](https://platform.openai.com/docs/assistants/tools) to
+        [Assistants Tools guide](https://platform.openaix.com/docs/assistants/tools) to
         learn more about the types of files supported. The Fine-tuning API only supports
         `.jsonl` files.
 
-        Please [contact us](https://help.openai.com/) if you need to increase these
+        Please [contact us](https://help.openaix.com/) if you need to increase these
         storage limits.
 
         Args:
@@ -351,10 +359,10 @@ class AsyncFiles(AsyncAPIResource):
           purpose: The intended purpose of the uploaded file.
 
               Use "fine-tune" for
-              [Fine-tuning](https://platform.openai.com/docs/api-reference/fine-tuning) and
+              [Fine-tuning](https://platform.openaix.com/docs/api-reference/fine-tuning) and
               "assistants" for
-              [Assistants](https://platform.openai.com/docs/api-reference/assistants) and
-              [Messages](https://platform.openai.com/docs/api-reference/messages). This allows
+              [Assistants](https://platform.openaix.com/docs/api-reference/assistants) and
+              [Messages](https://platform.openaix.com/docs/api-reference/messages). This allows
               us to validate the format of the uploaded file is correct for fine-tuning.
 
           extra_headers: Send extra headers
@@ -371,12 +379,14 @@ class AsyncFiles(AsyncAPIResource):
                 "purpose": purpose,
             }
         )
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        files = extract_files(
+            cast(Mapping[str, object], body), paths=[["file"]])
         if files:
             # It should be noted that the actual Content-Type header that will be
             # sent to the server will contain a `boundary` parameter, e.g.
             # multipart/form-data; boundary=---abc--
-            extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+            extra_headers = {
+                "Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
             "/files",
             body=await async_maybe_transform(body, file_create_params.FileCreateParams),
@@ -411,7 +421,8 @@ class AsyncFiles(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not file_id:
-            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `file_id` but received {file_id!r}")
         return await self._get(
             f"/files/{file_id}",
             options=make_request_options(
@@ -453,7 +464,8 @@ class AsyncFiles(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"purpose": purpose}, file_list_params.FileListParams),
+                query=maybe_transform(
+                    {"purpose": purpose}, file_list_params.FileListParams),
             ),
             model=FileObject,
         )
@@ -482,7 +494,8 @@ class AsyncFiles(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not file_id:
-            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `file_id` but received {file_id!r}")
         return await self._delete(
             f"/files/{file_id}",
             options=make_request_options(
@@ -515,8 +528,10 @@ class AsyncFiles(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not file_id:
-            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
-        extra_headers = {"Accept": "application/binary", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        extra_headers = {"Accept": "application/binary",
+                         **(extra_headers or {})}
         return await self._get(
             f"/files/{file_id}/content",
             options=make_request_options(
@@ -550,7 +565,8 @@ class AsyncFiles(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not file_id:
-            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `file_id` but received {file_id!r}")
         return await self._get(
             f"/files/{file_id}/content",
             options=make_request_options(

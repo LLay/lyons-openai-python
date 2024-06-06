@@ -6,8 +6,8 @@ import httpx
 import pytest
 import pydantic
 
-from openai import OpenAI, BaseModel, AsyncOpenAI
-from openai._response import (
+from openaix import OpenAI, BaseModel, AsyncOpenAI
+from openaix._response import (
     APIResponse,
     BaseAPIResponse,
     AsyncAPIResponse,
@@ -15,8 +15,8 @@ from openai._response import (
     AsyncBinaryAPIResponse,
     extract_response_type,
 )
-from openai._streaming import Stream
-from openai._base_client import FinalRequestOptions
+from openaix._streaming import Stream
+from openaix._base_client import FinalRequestOptions
 
 
 class ConcreteBaseAPIResponse(APIResponse[bytes]):
@@ -72,7 +72,7 @@ def test_response_parse_mismatched_basemodel(client: OpenAI) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from openaix import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from openaixx import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
@@ -90,7 +90,7 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncOpen
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from openaix import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from openaixx import BaseModel`",
     ):
         await response.parse(to=PydanticModel)
 
@@ -131,7 +131,8 @@ class CustomModel(BaseModel):
 
 def test_response_parse_custom_model(client: OpenAI) -> None:
     response = APIResponse(
-        raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
+        raw=httpx.Response(200, content=json.dumps(
+            {"foo": "hello!", "bar": 2})),
         client=client,
         stream=False,
         stream_cls=None,
@@ -147,7 +148,8 @@ def test_response_parse_custom_model(client: OpenAI) -> None:
 @pytest.mark.asyncio
 async def test_async_response_parse_custom_model(async_client: AsyncOpenAI) -> None:
     response = AsyncAPIResponse(
-        raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
+        raw=httpx.Response(200, content=json.dumps(
+            {"foo": "hello!", "bar": 2})),
         client=async_client,
         stream=False,
         stream_cls=None,
@@ -162,7 +164,8 @@ async def test_async_response_parse_custom_model(async_client: AsyncOpenAI) -> N
 
 def test_response_parse_annotated_type(client: OpenAI) -> None:
     response = APIResponse(
-        raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
+        raw=httpx.Response(200, content=json.dumps(
+            {"foo": "hello!", "bar": 2})),
         client=client,
         stream=False,
         stream_cls=None,
@@ -171,7 +174,8 @@ def test_response_parse_annotated_type(client: OpenAI) -> None:
     )
 
     obj = response.parse(
-        to=cast("type[CustomModel]", Annotated[CustomModel, "random metadata"]),
+        to=cast("type[CustomModel]",
+                Annotated[CustomModel, "random metadata"]),
     )
     assert obj.foo == "hello!"
     assert obj.bar == 2
@@ -179,7 +183,8 @@ def test_response_parse_annotated_type(client: OpenAI) -> None:
 
 async def test_async_response_parse_annotated_type(async_client: AsyncOpenAI) -> None:
     response = AsyncAPIResponse(
-        raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
+        raw=httpx.Response(200, content=json.dumps(
+            {"foo": "hello!", "bar": 2})),
         client=async_client,
         stream=False,
         stream_cls=None,
@@ -188,7 +193,8 @@ async def test_async_response_parse_annotated_type(async_client: AsyncOpenAI) ->
     )
 
     obj = await response.parse(
-        to=cast("type[CustomModel]", Annotated[CustomModel, "random metadata"]),
+        to=cast("type[CustomModel]",
+                Annotated[CustomModel, "random metadata"]),
     )
     assert obj.foo == "hello!"
     assert obj.bar == 2

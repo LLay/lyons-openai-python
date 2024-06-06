@@ -9,7 +9,7 @@ from typing_extensions import ClassVar
 import httpx
 import pydantic
 
-import openai
+import openaix
 
 from . import _tools
 from .. import _ApiType, __version__
@@ -87,13 +87,13 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--api-version",
-        help="The Azure API version, e.g. 'https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#rest-api-versioning'",
+        help="The Azure API version, e.g. 'https://learn.microsoft.com/en-us/azure/ai-services/openaix/reference#rest-api-versioning'",
     )
 
     # azure
     parser.add_argument(
         "--azure-endpoint",
-        help="The Azure endpoint, e.g. 'https://endpoint.openai.azure.com'",
+        help="The Azure endpoint, e.g. 'https://endpoint.openaix.azure.com'",
     )
     parser.add_argument(
         "--azure-ad-token",
@@ -118,7 +118,8 @@ def _build_parser() -> argparse.ArgumentParser:
 
     register_commands(sub_api)
 
-    sub_tools = subparsers.add_parser("tools", help="Client side tools for convenience")
+    sub_tools = subparsers.add_parser(
+        "tools", help="Client side tools for convenience")
     _tools.register_commands(sub_tools, subparsers)
 
     return parser
@@ -172,7 +173,8 @@ def _main() -> None:
         for proxy in args.proxy:
             key = "https://" if proxy.startswith("https") else "http://"
             if key in proxies:
-                raise CLIError(f"Multiple {key} proxies given - only the last one would be used")
+                raise CLIError(
+                    f"Multiple {key} proxies given - only the last one would be used")
 
             proxies[key] = proxy
 
@@ -180,29 +182,29 @@ def _main() -> None:
         proxies=proxies or None,
         http2=can_use_http2(),
     )
-    openai.http_client = http_client
+    openaix.http_client = http_client
 
     if args.organization:
-        openai.organization = args.organization
+        openaix.organization = args.organization
 
     if args.api_key:
-        openai.api_key = args.api_key
+        openaix.api_key = args.api_key
 
     if args.api_base:
-        openai.base_url = args.api_base
+        openaix.base_url = args.api_base
 
     # azure
     if args.api_type is not None:
-        openai.api_type = args.api_type
+        openaix.api_type = args.api_type
 
     if args.azure_endpoint is not None:
-        openai.azure_endpoint = args.azure_endpoint
+        openaix.azure_endpoint = args.azure_endpoint
 
     if args.api_version is not None:
-        openai.api_version = args.api_version
+        openaix.api_version = args.api_version
 
     if args.azure_ad_token is not None:
-        openai.azure_ad_token = args.azure_ad_token
+        openaix.azure_ad_token = args.azure_ad_token
 
     try:
         if args.args_model:

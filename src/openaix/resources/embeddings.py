@@ -56,13 +56,13 @@ class Embeddings(SyncAPIResource):
               The input must not exceed the max input tokens for the model (8192 tokens for
               `text-embedding-ada-002`), cannot be an empty string, and any array must be 2048
               dimensions or less.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           model: ID of the model to use. You can use the
-              [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+              [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
               see all of your available models, or see our
-              [Model overview](https://platform.openai.com/docs/models/overview) for
+              [Model overview](https://platform.openaix.com/docs/models/overview) for
               descriptions of them.
 
           dimensions: The number of dimensions the resulting output embeddings should have. Only
@@ -73,7 +73,7 @@ class Embeddings(SyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -112,7 +112,8 @@ class Embeddings(SyncAPIResource):
 
         return self._post(
             "/embeddings",
-            body=maybe_transform(params, embedding_create_params.EmbeddingCreateParams),
+            body=maybe_transform(
+                params, embedding_create_params.EmbeddingCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -157,13 +158,13 @@ class AsyncEmbeddings(AsyncAPIResource):
               The input must not exceed the max input tokens for the model (8192 tokens for
               `text-embedding-ada-002`), cannot be an empty string, and any array must be 2048
               dimensions or less.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           model: ID of the model to use. You can use the
-              [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+              [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
               see all of your available models, or see our
-              [Model overview](https://platform.openai.com/docs/models/overview) for
+              [Model overview](https://platform.openaix.com/docs/models/overview) for
               descriptions of them.
 
           dimensions: The number of dimensions the resulting output embeddings should have. Only
@@ -174,7 +175,7 @@ class AsyncEmbeddings(AsyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -213,7 +214,8 @@ class AsyncEmbeddings(AsyncAPIResource):
 
         return await self._post(
             "/embeddings",
-            body=maybe_transform(params, embedding_create_params.EmbeddingCreateParams),
+            body=maybe_transform(
+                params, embedding_create_params.EmbeddingCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

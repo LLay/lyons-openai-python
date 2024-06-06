@@ -46,8 +46,10 @@ class Images(SyncAPIResource):
         image: FileTypes,
         model: Union[str, Literal["dall-e-2"], None] | NotGiven = NOT_GIVEN,
         n: Optional[int] | NotGiven = NOT_GIVEN,
-        response_format: Optional[Literal["url", "b64_json"]] | NotGiven = NOT_GIVEN,
-        size: Optional[Literal["256x256", "512x512", "1024x1024"]] | NotGiven = NOT_GIVEN,
+        response_format: Optional[Literal["url",
+                                          "b64_json"]] | NotGiven = NOT_GIVEN,
+        size: Optional[Literal["256x256", "512x512",
+                               "1024x1024"]] | NotGiven = NOT_GIVEN,
         user: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -78,7 +80,7 @@ class Images(SyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -98,15 +100,18 @@ class Images(SyncAPIResource):
                 "user": user,
             }
         )
-        files = extract_files(cast(Mapping[str, object], body), paths=[["image"]])
+        files = extract_files(
+            cast(Mapping[str, object], body), paths=[["image"]])
         if files:
             # It should be noted that the actual Content-Type header that will be
             # sent to the server will contain a `boundary` parameter, e.g.
             # multipart/form-data; boundary=---abc--
-            extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+            extra_headers = {
+                "Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
             "/images/variations",
-            body=maybe_transform(body, image_create_variation_params.ImageCreateVariationParams),
+            body=maybe_transform(
+                body, image_create_variation_params.ImageCreateVariationParams),
             files=files,
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -122,8 +127,10 @@ class Images(SyncAPIResource):
         mask: FileTypes | NotGiven = NOT_GIVEN,
         model: Union[str, Literal["dall-e-2"], None] | NotGiven = NOT_GIVEN,
         n: Optional[int] | NotGiven = NOT_GIVEN,
-        response_format: Optional[Literal["url", "b64_json"]] | NotGiven = NOT_GIVEN,
-        size: Optional[Literal["256x256", "512x512", "1024x1024"]] | NotGiven = NOT_GIVEN,
+        response_format: Optional[Literal["url",
+                                          "b64_json"]] | NotGiven = NOT_GIVEN,
+        size: Optional[Literal["256x256", "512x512",
+                               "1024x1024"]] | NotGiven = NOT_GIVEN,
         user: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -160,7 +167,7 @@ class Images(SyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -182,12 +189,14 @@ class Images(SyncAPIResource):
                 "user": user,
             }
         )
-        files = extract_files(cast(Mapping[str, object], body), paths=[["image"], ["mask"]])
+        files = extract_files(cast(Mapping[str, object], body), paths=[
+                              ["image"], ["mask"]])
         if files:
             # It should be noted that the actual Content-Type header that will be
             # sent to the server will contain a `boundary` parameter, e.g.
             # multipart/form-data; boundary=---abc--
-            extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+            extra_headers = {
+                "Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
             "/images/edits",
             body=maybe_transform(body, image_edit_params.ImageEditParams),
@@ -202,11 +211,14 @@ class Images(SyncAPIResource):
         self,
         *,
         prompt: str,
-        model: Union[str, Literal["dall-e-2", "dall-e-3"], None] | NotGiven = NOT_GIVEN,
+        model: Union[str, Literal["dall-e-2", "dall-e-3"],
+                     None] | NotGiven = NOT_GIVEN,
         n: Optional[int] | NotGiven = NOT_GIVEN,
         quality: Literal["standard", "hd"] | NotGiven = NOT_GIVEN,
-        response_format: Optional[Literal["url", "b64_json"]] | NotGiven = NOT_GIVEN,
-        size: Optional[Literal["256x256", "512x512", "1024x1024", "1792x1024", "1024x1792"]] | NotGiven = NOT_GIVEN,
+        response_format: Optional[Literal["url",
+                                          "b64_json"]] | NotGiven = NOT_GIVEN,
+        size: Optional[Literal["256x256", "512x512", "1024x1024",
+                               "1792x1024", "1024x1792"]] | NotGiven = NOT_GIVEN,
         style: Optional[Literal["vivid", "natural"]] | NotGiven = NOT_GIVEN,
         user: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -247,7 +259,7 @@ class Images(SyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -294,8 +306,10 @@ class AsyncImages(AsyncAPIResource):
         image: FileTypes,
         model: Union[str, Literal["dall-e-2"], None] | NotGiven = NOT_GIVEN,
         n: Optional[int] | NotGiven = NOT_GIVEN,
-        response_format: Optional[Literal["url", "b64_json"]] | NotGiven = NOT_GIVEN,
-        size: Optional[Literal["256x256", "512x512", "1024x1024"]] | NotGiven = NOT_GIVEN,
+        response_format: Optional[Literal["url",
+                                          "b64_json"]] | NotGiven = NOT_GIVEN,
+        size: Optional[Literal["256x256", "512x512",
+                               "1024x1024"]] | NotGiven = NOT_GIVEN,
         user: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -326,7 +340,7 @@ class AsyncImages(AsyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -346,12 +360,14 @@ class AsyncImages(AsyncAPIResource):
                 "user": user,
             }
         )
-        files = extract_files(cast(Mapping[str, object], body), paths=[["image"]])
+        files = extract_files(
+            cast(Mapping[str, object], body), paths=[["image"]])
         if files:
             # It should be noted that the actual Content-Type header that will be
             # sent to the server will contain a `boundary` parameter, e.g.
             # multipart/form-data; boundary=---abc--
-            extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+            extra_headers = {
+                "Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
             "/images/variations",
             body=await async_maybe_transform(body, image_create_variation_params.ImageCreateVariationParams),
@@ -370,8 +386,10 @@ class AsyncImages(AsyncAPIResource):
         mask: FileTypes | NotGiven = NOT_GIVEN,
         model: Union[str, Literal["dall-e-2"], None] | NotGiven = NOT_GIVEN,
         n: Optional[int] | NotGiven = NOT_GIVEN,
-        response_format: Optional[Literal["url", "b64_json"]] | NotGiven = NOT_GIVEN,
-        size: Optional[Literal["256x256", "512x512", "1024x1024"]] | NotGiven = NOT_GIVEN,
+        response_format: Optional[Literal["url",
+                                          "b64_json"]] | NotGiven = NOT_GIVEN,
+        size: Optional[Literal["256x256", "512x512",
+                               "1024x1024"]] | NotGiven = NOT_GIVEN,
         user: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -408,7 +426,7 @@ class AsyncImages(AsyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -430,12 +448,14 @@ class AsyncImages(AsyncAPIResource):
                 "user": user,
             }
         )
-        files = extract_files(cast(Mapping[str, object], body), paths=[["image"], ["mask"]])
+        files = extract_files(cast(Mapping[str, object], body), paths=[
+                              ["image"], ["mask"]])
         if files:
             # It should be noted that the actual Content-Type header that will be
             # sent to the server will contain a `boundary` parameter, e.g.
             # multipart/form-data; boundary=---abc--
-            extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+            extra_headers = {
+                "Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
             "/images/edits",
             body=await async_maybe_transform(body, image_edit_params.ImageEditParams),
@@ -450,11 +470,14 @@ class AsyncImages(AsyncAPIResource):
         self,
         *,
         prompt: str,
-        model: Union[str, Literal["dall-e-2", "dall-e-3"], None] | NotGiven = NOT_GIVEN,
+        model: Union[str, Literal["dall-e-2", "dall-e-3"],
+                     None] | NotGiven = NOT_GIVEN,
         n: Optional[int] | NotGiven = NOT_GIVEN,
         quality: Literal["standard", "hd"] | NotGiven = NOT_GIVEN,
-        response_format: Optional[Literal["url", "b64_json"]] | NotGiven = NOT_GIVEN,
-        size: Optional[Literal["256x256", "512x512", "1024x1024", "1792x1024", "1024x1792"]] | NotGiven = NOT_GIVEN,
+        response_format: Optional[Literal["url",
+                                          "b64_json"]] | NotGiven = NOT_GIVEN,
+        size: Optional[Literal["256x256", "512x512", "1024x1024",
+                               "1792x1024", "1024x1792"]] | NotGiven = NOT_GIVEN,
         style: Optional[Literal["vivid", "natural"]] | NotGiven = NOT_GIVEN,
         user: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -495,7 +518,7 @@ class AsyncImages(AsyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 

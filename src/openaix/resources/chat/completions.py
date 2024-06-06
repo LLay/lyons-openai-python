@@ -79,17 +79,17 @@ class Completions(SyncAPIResource):
 
         Args:
           messages: A list of messages comprising the conversation so far.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_format_inputs_to_chatgpt_models).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_format_inputs_to_chatgpt_models).
 
           model: ID of the model to use. See the
-              [model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility)
+              [model endpoint compatibility](https://platform.openaix.com/docs/models/model-endpoint-compatibility)
               table for details on which models work with the Chat API.
 
           frequency_penalty: Number between -2.0 and 2.0. Positive values penalize new tokens based on their
               existing frequency in the text so far, decreasing the model's likelihood to
               repeat the same line verbatim.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           function_call: Deprecated in favor of `tool_choice`.
 
@@ -124,7 +124,7 @@ class Completions(SyncAPIResource):
 
               The total length of input tokens and generated tokens is limited by the model's
               context length.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           n: How many chat completion choices to generate for each input message. Note that
@@ -135,10 +135,10 @@ class Completions(SyncAPIResource):
               whether they appear in the text so far, increasing the model's likelihood to
               talk about new topics.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           response_format: An object specifying the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -165,7 +165,7 @@ class Completions(SyncAPIResource):
               [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
               as they become available, with the stream terminated by a `data: [DONE]`
               message.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
 
           temperature: What sampling temperature to use, between 0 and 2. Higher values like 0.8 will
               make the output more random, while lower values like 0.2 will make it more
@@ -199,7 +199,7 @@ class Completions(SyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -247,10 +247,10 @@ class Completions(SyncAPIResource):
 
         Args:
           messages: A list of messages comprising the conversation so far.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_format_inputs_to_chatgpt_models).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_format_inputs_to_chatgpt_models).
 
           model: ID of the model to use. See the
-              [model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility)
+              [model endpoint compatibility](https://platform.openaix.com/docs/models/model-endpoint-compatibility)
               table for details on which models work with the Chat API.
 
           stream: If set, partial message deltas will be sent, like in ChatGPT. Tokens will be
@@ -258,13 +258,13 @@ class Completions(SyncAPIResource):
               [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
               as they become available, with the stream terminated by a `data: [DONE]`
               message.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
 
           frequency_penalty: Number between -2.0 and 2.0. Positive values penalize new tokens based on their
               existing frequency in the text so far, decreasing the model's likelihood to
               repeat the same line verbatim.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           function_call: Deprecated in favor of `tool_choice`.
 
@@ -299,7 +299,7 @@ class Completions(SyncAPIResource):
 
               The total length of input tokens and generated tokens is limited by the model's
               context length.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           n: How many chat completion choices to generate for each input message. Note that
@@ -310,10 +310,10 @@ class Completions(SyncAPIResource):
               whether they appear in the text so far, increasing the model's likelihood to
               talk about new topics.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           response_format: An object specifying the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -367,7 +367,7 @@ class Completions(SyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -415,10 +415,10 @@ class Completions(SyncAPIResource):
 
         Args:
           messages: A list of messages comprising the conversation so far.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_format_inputs_to_chatgpt_models).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_format_inputs_to_chatgpt_models).
 
           model: ID of the model to use. See the
-              [model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility)
+              [model endpoint compatibility](https://platform.openaix.com/docs/models/model-endpoint-compatibility)
               table for details on which models work with the Chat API.
 
           stream: If set, partial message deltas will be sent, like in ChatGPT. Tokens will be
@@ -426,13 +426,13 @@ class Completions(SyncAPIResource):
               [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
               as they become available, with the stream terminated by a `data: [DONE]`
               message.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
 
           frequency_penalty: Number between -2.0 and 2.0. Positive values penalize new tokens based on their
               existing frequency in the text so far, decreasing the model's likelihood to
               repeat the same line verbatim.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           function_call: Deprecated in favor of `tool_choice`.
 
@@ -467,7 +467,7 @@ class Completions(SyncAPIResource):
 
               The total length of input tokens and generated tokens is limited by the model's
               context length.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           n: How many chat completion choices to generate for each input message. Note that
@@ -478,10 +478,10 @@ class Completions(SyncAPIResource):
               whether they appear in the text so far, increasing the model's likelihood to
               talk about new topics.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           response_format: An object specifying the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -535,7 +535,7 @@ class Completions(SyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -564,7 +564,8 @@ class Completions(SyncAPIResource):
         response_format: completion_create_params.ResponseFormat | NotGiven = NOT_GIVEN,
         seed: Optional[int] | NotGiven = NOT_GIVEN,
         stop: Union[Optional[str], List[str]] | NotGiven = NOT_GIVEN,
-        stream: Optional[Literal[False]] | Literal[True] | NotGiven = NOT_GIVEN,
+        stream: Optional[Literal[False]
+                         ] | Literal[True] | NotGiven = NOT_GIVEN,
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         tool_choice: ChatCompletionToolChoiceOptionParam | NotGiven = NOT_GIVEN,
         tools: Iterable[ChatCompletionToolParam] | NotGiven = NOT_GIVEN,
@@ -659,17 +660,17 @@ class AsyncCompletions(AsyncAPIResource):
 
         Args:
           messages: A list of messages comprising the conversation so far.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_format_inputs_to_chatgpt_models).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_format_inputs_to_chatgpt_models).
 
           model: ID of the model to use. See the
-              [model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility)
+              [model endpoint compatibility](https://platform.openaix.com/docs/models/model-endpoint-compatibility)
               table for details on which models work with the Chat API.
 
           frequency_penalty: Number between -2.0 and 2.0. Positive values penalize new tokens based on their
               existing frequency in the text so far, decreasing the model's likelihood to
               repeat the same line verbatim.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           function_call: Deprecated in favor of `tool_choice`.
 
@@ -704,7 +705,7 @@ class AsyncCompletions(AsyncAPIResource):
 
               The total length of input tokens and generated tokens is limited by the model's
               context length.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           n: How many chat completion choices to generate for each input message. Note that
@@ -715,10 +716,10 @@ class AsyncCompletions(AsyncAPIResource):
               whether they appear in the text so far, increasing the model's likelihood to
               talk about new topics.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           response_format: An object specifying the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -745,7 +746,7 @@ class AsyncCompletions(AsyncAPIResource):
               [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
               as they become available, with the stream terminated by a `data: [DONE]`
               message.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
 
           temperature: What sampling temperature to use, between 0 and 2. Higher values like 0.8 will
               make the output more random, while lower values like 0.2 will make it more
@@ -779,7 +780,7 @@ class AsyncCompletions(AsyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -827,10 +828,10 @@ class AsyncCompletions(AsyncAPIResource):
 
         Args:
           messages: A list of messages comprising the conversation so far.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_format_inputs_to_chatgpt_models).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_format_inputs_to_chatgpt_models).
 
           model: ID of the model to use. See the
-              [model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility)
+              [model endpoint compatibility](https://platform.openaix.com/docs/models/model-endpoint-compatibility)
               table for details on which models work with the Chat API.
 
           stream: If set, partial message deltas will be sent, like in ChatGPT. Tokens will be
@@ -838,13 +839,13 @@ class AsyncCompletions(AsyncAPIResource):
               [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
               as they become available, with the stream terminated by a `data: [DONE]`
               message.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
 
           frequency_penalty: Number between -2.0 and 2.0. Positive values penalize new tokens based on their
               existing frequency in the text so far, decreasing the model's likelihood to
               repeat the same line verbatim.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           function_call: Deprecated in favor of `tool_choice`.
 
@@ -879,7 +880,7 @@ class AsyncCompletions(AsyncAPIResource):
 
               The total length of input tokens and generated tokens is limited by the model's
               context length.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           n: How many chat completion choices to generate for each input message. Note that
@@ -890,10 +891,10 @@ class AsyncCompletions(AsyncAPIResource):
               whether they appear in the text so far, increasing the model's likelihood to
               talk about new topics.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           response_format: An object specifying the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -947,7 +948,7 @@ class AsyncCompletions(AsyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -995,10 +996,10 @@ class AsyncCompletions(AsyncAPIResource):
 
         Args:
           messages: A list of messages comprising the conversation so far.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_format_inputs_to_chatgpt_models).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_format_inputs_to_chatgpt_models).
 
           model: ID of the model to use. See the
-              [model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility)
+              [model endpoint compatibility](https://platform.openaix.com/docs/models/model-endpoint-compatibility)
               table for details on which models work with the Chat API.
 
           stream: If set, partial message deltas will be sent, like in ChatGPT. Tokens will be
@@ -1006,13 +1007,13 @@ class AsyncCompletions(AsyncAPIResource):
               [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
               as they become available, with the stream terminated by a `data: [DONE]`
               message.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
 
           frequency_penalty: Number between -2.0 and 2.0. Positive values penalize new tokens based on their
               existing frequency in the text so far, decreasing the model's likelihood to
               repeat the same line verbatim.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           function_call: Deprecated in favor of `tool_choice`.
 
@@ -1047,7 +1048,7 @@ class AsyncCompletions(AsyncAPIResource):
 
               The total length of input tokens and generated tokens is limited by the model's
               context length.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           n: How many chat completion choices to generate for each input message. Note that
@@ -1058,10 +1059,10 @@ class AsyncCompletions(AsyncAPIResource):
               whether they appear in the text so far, increasing the model's likelihood to
               talk about new topics.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           response_format: An object specifying the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1115,7 +1116,7 @@ class AsyncCompletions(AsyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -1144,7 +1145,8 @@ class AsyncCompletions(AsyncAPIResource):
         response_format: completion_create_params.ResponseFormat | NotGiven = NOT_GIVEN,
         seed: Optional[int] | NotGiven = NOT_GIVEN,
         stop: Union[Optional[str], List[str]] | NotGiven = NOT_GIVEN,
-        stream: Optional[Literal[False]] | Literal[True] | NotGiven = NOT_GIVEN,
+        stream: Optional[Literal[False]
+                         ] | Literal[True] | NotGiven = NOT_GIVEN,
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         tool_choice: ChatCompletionToolChoiceOptionParam | NotGiven = NOT_GIVEN,
         tools: Iterable[ChatCompletionToolParam] | NotGiven = NOT_GIVEN,

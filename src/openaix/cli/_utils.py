@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import sys
 
-import openai
+import openaix
 
 from .. import OpenAI, _load_client
 from .._compat import model_json
@@ -25,7 +25,7 @@ def get_client() -> OpenAI:
 
 
 def organization_info() -> str:
-    organization = openai.organization
+    organization = openaix.organization
     if organization is not None:
         return "[organization={}] ".format(organization)
 

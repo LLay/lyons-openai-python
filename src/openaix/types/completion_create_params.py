@@ -5,21 +5,24 @@ from __future__ import annotations
 from typing import Dict, List, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["CompletionCreateParamsBase", "CompletionCreateParamsNonStreaming", "CompletionCreateParamsStreaming"]
+__all__ = ["CompletionCreateParamsBase",
+           "CompletionCreateParamsNonStreaming", "CompletionCreateParamsStreaming"]
 
 
 class CompletionCreateParamsBase(TypedDict, total=False):
-    model: Required[Union[str, Literal["gpt-3.5-turbo-instruct", "davinci-002", "babbage-002"]]]
+    model: Required[Union[str, Literal["gpt-3.5-turbo-instruct",
+                                       "davinci-002", "babbage-002"]]]
     """ID of the model to use.
 
     You can use the
-    [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+    [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
     see all of your available models, or see our
-    [Model overview](https://platform.openai.com/docs/models/overview) for
+    [Model overview](https://platform.openaix.com/docs/models/overview) for
     descriptions of them.
     """
 
-    prompt: Required[Union[str, List[str], Iterable[int], Iterable[Iterable[int]], None]]
+    prompt: Required[Union[str, List[str],
+                           Iterable[int], Iterable[Iterable[int]], None]]
     """
     The prompt(s) to generate completions for, encoded as a string, array of
     strings, array of tokens, or array of token arrays.
@@ -51,7 +54,7 @@ class CompletionCreateParamsBase(TypedDict, total=False):
     Positive values penalize new tokens based on their existing frequency in the
     text so far, decreasing the model's likelihood to repeat the same line verbatim.
 
-    [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+    [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
     """
 
     logit_bias: Optional[Dict[str, int]]
@@ -86,7 +89,7 @@ class CompletionCreateParamsBase(TypedDict, total=False):
 
     The token count of your prompt plus `max_tokens` cannot exceed the model's
     context length.
-    [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+    [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
     for counting tokens.
     """
 
@@ -104,7 +107,7 @@ class CompletionCreateParamsBase(TypedDict, total=False):
     Positive values penalize new tokens based on whether they appear in the text so
     far, increasing the model's likelihood to talk about new topics.
 
-    [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+    [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
     """
 
     seed: Optional[int]
@@ -151,7 +154,7 @@ class CompletionCreateParamsBase(TypedDict, total=False):
     """
     A unique identifier representing your end-user, which can help OpenAI to monitor
     and detect abuse.
-    [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+    [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
     """
 
 
@@ -163,7 +166,7 @@ class CompletionCreateParamsNonStreaming(CompletionCreateParamsBase):
     [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
     as they become available, with the stream terminated by a `data: [DONE]`
     message.
-    [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+    [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
     """
 
 
@@ -175,8 +178,9 @@ class CompletionCreateParamsStreaming(CompletionCreateParamsBase):
     [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
     as they become available, with the stream terminated by a `data: [DONE]`
     message.
-    [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+    [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
     """
 
 
-CompletionCreateParams = Union[CompletionCreateParamsNonStreaming, CompletionCreateParamsStreaming]
+CompletionCreateParams = Union[CompletionCreateParamsNonStreaming,
+                               CompletionCreateParamsStreaming]

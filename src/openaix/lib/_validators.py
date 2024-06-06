@@ -19,7 +19,8 @@ class Remediation(NamedTuple):
     error_msg: Optional[str] = None
 
 
-OptionalDataFrameT = TypeVar("OptionalDataFrameT", bound="Optional[pd.DataFrame]")
+OptionalDataFrameT = TypeVar(
+    "OptionalDataFrameT", bound="Optional[pd.DataFrame]")
 
 
 def num_examples_validator(df: pd.DataFrame) -> Remediation:
@@ -165,7 +166,8 @@ def long_examples_validator(df: pd.DataFrame) -> Remediation:
     if ft_type != "open-ended generation":
 
         def get_long_indexes(d: pd.DataFrame) -> Any:
-            long_examples = d.apply(lambda x: len(x.prompt) + len(x.completion) > 10000, axis=1)
+            long_examples = d.apply(lambda x: len(
+                x.prompt) + len(x.completion) > 10000, axis=1)
             return d.reset_index().index[long_examples].tolist()
 
         long_indexes = get_long_indexes(df)
@@ -241,7 +243,7 @@ def common_prompt_suffix_validator(df: pd.DataFrame) -> Remediation:
             immediate_msg += f"\n  WARNING: Some of your prompts contain the suffix `{common_suffix}` more than once. We strongly suggest that you review your prompts and add a unique suffix"
 
     else:
-        immediate_msg = "\n- Your data does not contain a common separator at the end of your prompts. Having a separator string appended to the end of the prompt makes it clearer to the fine-tuned model where the completion should begin. See https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset for more detail and examples. If you intend to do open-ended generation, then you should leave the prompts empty"
+        immediate_msg = "\n- Your data does not contain a common separator at the end of your prompts. Having a separator string appended to the end of the prompt makes it clearer to the fine-tuned model where the completion should begin. See https://platform.openaix.com/docs/guides/fine-tuning/preparing-your-dataset for more detail and examples. If you intend to do open-ended generation, then you should leave the prompts empty"
 
     if common_suffix == "":
         optional_msg = f"Add a suffix separator `{display_suggested_suffix}` to all prompts"
@@ -273,7 +275,7 @@ def common_prompt_prefix_validator(df: pd.DataFrame) -> Remediation:
         return Remediation(name="common_prefix")
 
     def remove_common_prefix(x: Any, prefix: Any) -> Any:
-        x["prompt"] = x["prompt"].str[len(prefix) :]
+        x["prompt"] = x["prompt"].str[len(prefix):]
         return x
 
     if (df.prompt == common_prefix).all():
@@ -309,7 +311,7 @@ def common_completion_prefix_validator(df: pd.DataFrame) -> Remediation:
         return Remediation(name="common_prefix")
 
     def remove_common_prefix(x: Any, prefix: Any, ws_prefix: Any) -> Any:
-        x["completion"] = x["completion"].str[len(prefix) :]
+        x["completion"] = x["completion"].str[len(prefix):]
         if ws_prefix:
             # keep the single whitespace as prefix
             x["completion"] = f" {x['completion']}"
@@ -384,7 +386,7 @@ def common_completion_suffix_validator(df: pd.DataFrame) -> Remediation:
             immediate_msg += f"\n  WARNING: Some of your completions contain the suffix `{common_suffix}` more than once. We suggest that you review your completions and add a unique ending"
 
     else:
-        immediate_msg = "\n- Your data does not contain a common ending at the end of your completions. Having a common ending string appended to the end of the completion makes it clearer to the fine-tuned model where the completion should end. See https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset for more detail and examples."
+        immediate_msg = "\n- Your data does not contain a common ending at the end of your completions. Having a common ending string appended to the end of the completion makes it clearer to the fine-tuned model where the completion should end. See https://platform.openaix.com/docs/guides/fine-tuning/preparing-your-dataset for more detail and examples."
 
     if common_suffix == "":
         optional_msg = f"Add a suffix ending `{display_suggested_suffix}` to all completions"
@@ -407,7 +409,8 @@ def completions_space_start_validator(df: pd.DataFrame) -> Remediation:
     """
 
     def add_space_start(x: Any) -> Any:
-        x["completion"] = x["completion"].apply(lambda s: ("" if s.startswith(" ") else " ") + s)
+        x["completion"] = x["completion"].apply(
+            lambda s: ("" if s.startswith(" ") else " ") + s)
         return x
 
     optional_msg = None
@@ -415,7 +418,7 @@ def completions_space_start_validator(df: pd.DataFrame) -> Remediation:
     immediate_msg = None
 
     if df.completion.str[:1].nunique() != 1 or df.completion.values[0][0] != " ":
-        immediate_msg = "\n- The completion should start with a whitespace character (` `). This tends to produce better results due to the tokenization we use. See https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset for more details"
+        immediate_msg = "\n- The completion should start with a whitespace character (` `). This tends to produce better results due to the tokenization we use. See https://platform.openaix.com/docs/guides/fine-tuning/preparing-your-dataset for more details"
         optional_msg = "Add a whitespace character to the beginning of the completion"
         optional_fn = add_space_start
     return Remediation(
@@ -435,13 +438,15 @@ def lower_case_validator(df: pd.DataFrame, column: Any) -> Remediation | None:
         x[column] = x[column].str.lower()
         return x
 
-    count_upper = df[column].apply(lambda x: sum(1 for c in x if c.isalpha() and c.isupper())).sum()
-    count_lower = df[column].apply(lambda x: sum(1 for c in x if c.isalpha() and c.islower())).sum()
+    count_upper = df[column].apply(lambda x: sum(
+        1 for c in x if c.isalpha() and c.isupper())).sum()
+    count_lower = df[column].apply(lambda x: sum(
+        1 for c in x if c.isalpha() and c.islower())).sum()
 
     if count_upper * 2 > count_lower:
         return Remediation(
             name="lower_case",
-            immediate_msg=f"\n- More than a third of your `{column}` column/key is uppercase. Uppercase {column}s tends to perform worse than a mixture of case encountered in normal language. We recommend to lower case the data if that makes sense in your domain. See https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset for more details",
+            immediate_msg=f"\n- More than a third of your `{column}` column/key is uppercase. Uppercase {column}s tends to perform worse than a mixture of case encountered in normal language. We recommend to lower case the data if that makes sense in your domain. See https://platform.openaix.com/docs/guides/fine-tuning/preparing-your-dataset for more details",
             optional_msg=f"Lowercase all your data in column/key `{column}`",
             optional_fn=lower_case,
         )
@@ -465,7 +470,8 @@ def read_any_format(
     if os.path.isfile(fname):
         try:
             if fname.lower().endswith(".csv") or fname.lower().endswith(".tsv"):
-                file_extension_str, separator = ("CSV", ",") if fname.lower().endswith(".csv") else ("TSV", "\t")
+                file_extension_str, separator = (
+                    "CSV", ",") if fname.lower().endswith(".csv") else ("TSV", "\t")
                 immediate_msg = (
                     f"\n- Based on your file extension, your file is formatted as a {file_extension_str} file"
                 )
@@ -490,28 +496,33 @@ def read_any_format(
                         dtype=str,
                     ).fillna("")
             elif fname.lower().endswith(".jsonl"):
-                df = pd.read_json(fname, lines=True, dtype=str).fillna("")  # type: ignore
+                df = pd.read_json(fname, lines=True, dtype=str).fillna(
+                    "")  # type: ignore
                 if len(df) == 1:  # type: ignore
                     # this is NOT what we expect for a .jsonl file
                     immediate_msg = "\n- Your JSONL file appears to be in a JSON format. Your file will be converted to JSONL format"
                     necessary_msg = "Your format `JSON` will be converted to `JSONL`"
-                    df = pd.read_json(fname, dtype=str).fillna("")  # type: ignore
+                    df = pd.read_json(fname, dtype=str).fillna(
+                        "")  # type: ignore
                 else:
                     pass  # this is what we expect for a .jsonl file
             elif fname.lower().endswith(".json"):
                 try:
                     # to handle case where .json file is actually a .jsonl file
-                    df = pd.read_json(fname, lines=True, dtype=str).fillna("")  # type: ignore
+                    df = pd.read_json(fname, lines=True, dtype=str).fillna(
+                        "")  # type: ignore
                     if len(df) == 1:  # type: ignore
                         # this code path corresponds to a .json file that has one line
-                        df = pd.read_json(fname, dtype=str).fillna("")  # type: ignore
+                        df = pd.read_json(fname, dtype=str).fillna(
+                            "")  # type: ignore
                     else:
                         # this is NOT what we expect for a .json file
                         immediate_msg = "\n- Your JSON file appears to be in a JSONL format. Your file will be converted to JSONL format"
                         necessary_msg = "Your format `JSON` will be converted to `JSONL`"
                 except ValueError:
                     # this code path corresponds to a .json file that has multiple lines (i.e. it is indented)
-                    df = pd.read_json(fname, dtype=str).fillna("")  # type: ignore
+                    df = pd.read_json(fname, dtype=str).fillna(
+                        "")  # type: ignore
             else:
                 error_msg = (
                     "Your file must have one of the following extensions: .CSV, .TSV, .XLSX, .TXT, .JSON or .JSONL"
@@ -554,7 +565,8 @@ def apply_necessary_remediation(df: OptionalDataFrameT, remediation: Remediation
     This function will apply a necessary remediation to a dataframe, or print an error message if one exists.
     """
     if remediation.error_msg is not None:
-        sys.stderr.write(f"\n\nERROR in {remediation.name} validator: {remediation.error_msg}\n\nAborting...")
+        sys.stderr.write(
+            f"\n\nERROR in {remediation.name} validator: {remediation.error_msg}\n\nAborting...")
         sys.exit(1)
     if remediation.immediate_msg is not None:
         sys.stdout.write(remediation.immediate_msg)
@@ -623,7 +635,8 @@ def get_outfnames(fname: str, split: bool) -> list[str]:
     i = 0
     while True:
         index_suffix = f" ({i})" if i > 0 else ""
-        candidate_fnames = [f"{os.path.splitext(fname)[0]}_prepared{suffix}{index_suffix}.jsonl" for suffix in suffixes]
+        candidate_fnames = [
+            f"{os.path.splitext(fname)[0]}_prepared{suffix}{index_suffix}.jsonl" for suffix in suffixes]
         if not any(os.path.isfile(f) for f in candidate_fnames):
             return candidate_fnames
         i += 1
@@ -653,8 +666,10 @@ def write_out_file(df: pd.DataFrame, fname: str, any_remediations: bool, auto_ac
             split = True
 
     additional_params = ""
-    common_prompt_suffix_new_line_handled = common_prompt_suffix.replace("\n", "\\n")
-    common_completion_suffix_new_line_handled = common_completion_suffix.replace("\n", "\\n")
+    common_prompt_suffix_new_line_handled = common_prompt_suffix.replace(
+        "\n", "\\n")
+    common_completion_suffix_new_line_handled = common_completion_suffix.replace(
+        "\n", "\\n")
     optional_ending_string = (
         f' Make sure to include `stop=["{common_completion_suffix_new_line_handled}"]` so that the generated texts ends at the expected place.'
         if len(common_completion_suffix_new_line_handled) > 0
@@ -672,7 +687,8 @@ def write_out_file(df: pd.DataFrame, fname: str, any_remediations: bool, auto_ac
     elif accept_suggestion(input_text, auto_accept):
         fnames = get_outfnames(fname, split)
         if split:
-            assert len(fnames) == 2 and "train" in fnames[0] and "valid" in fnames[1]
+            assert len(
+                fnames) == 2 and "train" in fnames[0] and "valid" in fnames[1]
             MAX_VALID_EXAMPLES = 1000
             n_train = max(len(df) - MAX_VALID_EXAMPLES, int(len(df) * 0.8))
             df_train = df.sample(n=n_train, random_state=42)
@@ -697,7 +713,8 @@ def write_out_file(df: pd.DataFrame, fname: str, any_remediations: bool, auto_ac
             )
 
         # Add -v VALID_FILE if we split the file into train / valid
-        files_string = ("s" if split else "") + " to `" + ("` and `".join(fnames))
+        files_string = ("s" if split else "") + \
+            " to `" + ("` and `".join(fnames))
         valid_string = f' -v "{fnames[1]}"' if split else ""
         separator_reminder = (
             ""
@@ -733,11 +750,12 @@ def get_common_xfix(series: Any, xfix: str = "suffix") -> str:
     common_xfix = ""
     while True:
         common_xfixes = (
-            series.str[-(len(common_xfix) + 1) :] if xfix == "suffix" else series.str[: len(common_xfix) + 1]
+            series.str[-(len(common_xfix) + 1)                       :] if xfix == "suffix" else series.str[: len(common_xfix) + 1]
         )  # first few or last few characters
         if common_xfixes.nunique() != 1:  # we found the character at which we don't have a unique xfix anymore
             break
-        elif common_xfix == common_xfixes.values[0]:  # the entire first row is a prefix of every other row
+        # the entire first row is a prefix of every other row
+        elif common_xfix == common_xfixes.values[0]:
             break
         else:  # the first or last few characters are still common across all rows - let's try to add one more
             common_xfix = common_xfixes.values[0]
@@ -797,13 +815,16 @@ def apply_validators(
     any_optional_applied = False
 
     if any_optional_or_necessary_remediations:
-        sys.stdout.write("\n\nBased on the analysis we will perform the following actions:\n")
+        sys.stdout.write(
+            "\n\nBased on the analysis we will perform the following actions:\n")
         for remediation in optional_remediations:
-            df, optional_applied = apply_optional_remediation(df, remediation, auto_accept)
+            df, optional_applied = apply_optional_remediation(
+                df, remediation, auto_accept)
             any_optional_applied = any_optional_applied or optional_applied
     else:
         sys.stdout.write("\n\nNo remediations found.\n")
 
     any_optional_or_necessary_applied = any_optional_applied or any_necessary_applied
 
-    write_out_file_func(df, fname, any_optional_or_necessary_applied, auto_accept)
+    write_out_file_func(
+        df, fname, any_optional_or_necessary_applied, auto_accept)

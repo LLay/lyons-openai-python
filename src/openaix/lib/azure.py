@@ -30,8 +30,10 @@ _deployments_endpoints = set(
 
 AzureADTokenProvider = Callable[[], str]
 AsyncAzureADTokenProvider = Callable[[], "str | Awaitable[str]"]
-_HttpxClientT = TypeVar("_HttpxClientT", bound=Union[httpx.Client, httpx.AsyncClient])
-_DefaultStreamT = TypeVar("_DefaultStreamT", bound=Union[Stream[Any], AsyncStream[Any]])
+_HttpxClientT = TypeVar(
+    "_HttpxClientT", bound=Union[httpx.Client, httpx.AsyncClient])
+_DefaultStreamT = TypeVar(
+    "_DefaultStreamT", bound=Union[Stream[Any], AsyncStream[Any]])
 
 
 # we need to use a sentinel API key value for Azure AD
@@ -150,7 +152,7 @@ class AzureOpenAI(BaseAzureClient[httpx.Client, Stream[Any]], OpenAI):
         - `azure_endpoint` from `AZURE_OPENAI_ENDPOINT`
 
         Args:
-            azure_endpoint: Your Azure endpoint, including the resource, e.g. `https://example-resource.azure.openai.com/`
+            azure_endpoint: Your Azure endpoint, including the resource, e.g. `https://example-resource.azure.openaix.com/`
 
             azure_ad_token: Your Azure Active Directory token, https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id
 
@@ -198,7 +200,8 @@ class AzureOpenAI(BaseAzureClient[httpx.Client, Stream[Any]], OpenAI):
                 base_url = f"{azure_endpoint}/openaix"
         else:
             if azure_endpoint is not None:
-                raise ValueError("base_url and azure_endpoint are mutually exclusive")
+                raise ValueError(
+                    "base_url and azure_endpoint are mutually exclusive")
 
         if api_key is None:
             # define a sentinel value to avoid any typing issues
@@ -272,7 +275,8 @@ class AzureOpenAI(BaseAzureClient[httpx.Client, Stream[Any]], OpenAI):
         provider = self._azure_ad_token_provider
         if provider is not None:
             token = provider()
-            if not token or not isinstance(token, str):  # pyright: ignore[reportUnnecessaryIsInstance]
+            # pyright: ignore[reportUnnecessaryIsInstance]
+            if not token or not isinstance(token, str):
                 raise ValueError(
                     f"Expected `azure_ad_token_provider` argument to return a string but it returned {token}",
                 )
@@ -282,7 +286,8 @@ class AzureOpenAI(BaseAzureClient[httpx.Client, Stream[Any]], OpenAI):
 
     @override
     def _prepare_options(self, options: FinalRequestOptions) -> None:
-        headers: dict[str, str | Omit] = {**options.headers} if is_given(options.headers) else {}
+        headers: dict[str, str | Omit] = {
+            **options.headers} if is_given(options.headers) else {}
         options.headers = headers
 
         azure_ad_token = self._get_azure_ad_token()
@@ -391,7 +396,7 @@ class AsyncAzureOpenAI(BaseAzureClient[httpx.AsyncClient, AsyncStream[Any]], Asy
         - `azure_endpoint` from `AZURE_OPENAI_ENDPOINT`
 
         Args:
-            azure_endpoint: Your Azure endpoint, including the resource, e.g. `https://example-resource.azure.openai.com/`
+            azure_endpoint: Your Azure endpoint, including the resource, e.g. `https://example-resource.azure.openaix.com/`
 
             azure_ad_token: Your Azure Active Directory token, https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id
 
@@ -439,7 +444,8 @@ class AsyncAzureOpenAI(BaseAzureClient[httpx.AsyncClient, AsyncStream[Any]], Asy
                 base_url = f"{azure_endpoint}/openaix"
         else:
             if azure_endpoint is not None:
-                raise ValueError("base_url and azure_endpoint are mutually exclusive")
+                raise ValueError(
+                    "base_url and azure_endpoint are mutually exclusive")
 
         if api_key is None:
             # define a sentinel value to avoid any typing issues
@@ -525,7 +531,8 @@ class AsyncAzureOpenAI(BaseAzureClient[httpx.AsyncClient, AsyncStream[Any]], Asy
 
     @override
     async def _prepare_options(self, options: FinalRequestOptions) -> None:
-        headers: dict[str, str | Omit] = {**options.headers} if is_given(options.headers) else {}
+        headers: dict[str, str | Omit] = {
+            **options.headers} if is_given(options.headers) else {}
         options.headers = headers
 
         azure_ad_token = await self._get_azure_ad_token()

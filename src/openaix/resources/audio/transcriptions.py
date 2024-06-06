@@ -42,9 +42,11 @@ class Transcriptions(SyncAPIResource):
         model: Union[str, Literal["whisper-1"]],
         language: str | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
-        response_format: Literal["json", "text", "srt", "verbose_json", "vtt"] | NotGiven = NOT_GIVEN,
+        response_format: Literal["json", "text", "srt",
+                                 "verbose_json", "vtt"] | NotGiven = NOT_GIVEN,
         temperature: float | NotGiven = NOT_GIVEN,
-        timestamp_granularities: List[Literal["word", "segment"]] | NotGiven = NOT_GIVEN,
+        timestamp_granularities: List[Literal["word",
+                                              "segment"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -69,7 +71,7 @@ class Transcriptions(SyncAPIResource):
 
           prompt: An optional text to guide the model's style or continue a previous audio
               segment. The
-              [prompt](https://platform.openai.com/docs/guides/speech-to-text/prompting)
+              [prompt](https://platform.openaix.com/docs/guides/speech-to-text/prompting)
               should match the audio language.
 
           response_format: The format of the transcript output, in one of these options: `json`, `text`,
@@ -106,15 +108,18 @@ class Transcriptions(SyncAPIResource):
                 "timestamp_granularities": timestamp_granularities,
             }
         )
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        files = extract_files(
+            cast(Mapping[str, object], body), paths=[["file"]])
         if files:
             # It should be noted that the actual Content-Type header that will be
             # sent to the server will contain a `boundary` parameter, e.g.
             # multipart/form-data; boundary=---abc--
-            extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+            extra_headers = {
+                "Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
             "/audio/transcriptions",
-            body=maybe_transform(body, transcription_create_params.TranscriptionCreateParams),
+            body=maybe_transform(
+                body, transcription_create_params.TranscriptionCreateParams),
             files=files,
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -139,9 +144,11 @@ class AsyncTranscriptions(AsyncAPIResource):
         model: Union[str, Literal["whisper-1"]],
         language: str | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
-        response_format: Literal["json", "text", "srt", "verbose_json", "vtt"] | NotGiven = NOT_GIVEN,
+        response_format: Literal["json", "text", "srt",
+                                 "verbose_json", "vtt"] | NotGiven = NOT_GIVEN,
         temperature: float | NotGiven = NOT_GIVEN,
-        timestamp_granularities: List[Literal["word", "segment"]] | NotGiven = NOT_GIVEN,
+        timestamp_granularities: List[Literal["word",
+                                              "segment"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -166,7 +173,7 @@ class AsyncTranscriptions(AsyncAPIResource):
 
           prompt: An optional text to guide the model's style or continue a previous audio
               segment. The
-              [prompt](https://platform.openai.com/docs/guides/speech-to-text/prompting)
+              [prompt](https://platform.openaix.com/docs/guides/speech-to-text/prompting)
               should match the audio language.
 
           response_format: The format of the transcript output, in one of these options: `json`, `text`,
@@ -203,12 +210,14 @@ class AsyncTranscriptions(AsyncAPIResource):
                 "timestamp_granularities": timestamp_granularities,
             }
         )
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        files = extract_files(
+            cast(Mapping[str, object], body), paths=[["file"]])
         if files:
             # It should be noted that the actual Content-Type header that will be
             # sent to the server will contain a `boundary` parameter, e.g.
             # multipart/form-data; boundary=---abc--
-            extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+            extra_headers = {
+                "Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
             "/audio/transcriptions",
             body=await async_maybe_transform(body, transcription_create_params.TranscriptionCreateParams),

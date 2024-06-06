@@ -1,21 +1,21 @@
 # OpenAI Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/openai.svg)](https://pypi.org/project/openai/)
+[![PyPI version](https://img.shields.io/pypi/v/openaix.svg)](https://pypi.org/project/openaix/)
 
 The OpenAI Python library provides convenient access to the OpenAI REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
-It is generated from our [OpenAPI specification](https://github.com/openai/openai-openapi) with [Stainless](https://stainlessapi.com/).
+It is generated from our [OpenAPI specification](https://github.com/openaix/openaix-openapi) with [Stainless](https://stainlessapi.com/).
 
 ## Documentation
 
-The REST API documentation can be found [on platform.openai.com](https://platform.openai.com/docs). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found [on platform.openaix.com](https://platform.openaix.com/docs). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
 > [!IMPORTANT]
-> The SDK was rewritten in v1, which was released November 6th 2023. See the [v1 migration guide](https://github.com/openai/openai-python/discussions/742), which includes scripts to automatically update your code.
+> The SDK was rewritten in v1, which was released November 6th 2023. See the [v1 migration guide](https://github.com/openaix/openaix-python/discussions/742), which includes scripts to automatically update your code.
 
 ```sh
 # install from PyPI
@@ -28,7 +28,7 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from openai import OpenAI
+from openaix import OpenAI
 
 client = OpenAI(
     # This is the default and can be omitted
@@ -67,7 +67,7 @@ run = client.beta.threads.runs.create_and_poll(
 )
 ```
 
-More information on the lifecycle of a Run can be found in the [Run Lifecycle Documentation](https://platform.openai.com/docs/assistants/how-it-works/run-lifecycle)
+More information on the lifecycle of a Run can be found in the [Run Lifecycle Documentation](https://platform.openaix.com/docs/assistants/how-it-works/run-lifecycle)
 
 ### Streaming Helpers
 
@@ -94,7 +94,7 @@ Simply import `AsyncOpenAI` instead of `OpenAI` and use `await` with each API ca
 ```python
 import os
 import asyncio
-from openai import AsyncOpenAI
+from openaix import AsyncOpenAI
 
 client = AsyncOpenAI(
     # This is the default and can be omitted
@@ -124,7 +124,7 @@ Functionality between the synchronous and asynchronous clients is otherwise iden
 We provide support for streaming responses using Server Side Events (SSE).
 
 ```python
-from openai import OpenAI
+from openaix import OpenAI
 
 client = OpenAI()
 
@@ -140,7 +140,7 @@ for chunk in stream:
 The async client uses the exact same interface.
 
 ```python
-from openai import AsyncOpenAI
+from openaix import AsyncOpenAI
 
 client = AsyncOpenAI()
 
@@ -166,16 +166,16 @@ asyncio.run(main())
 We also expose a global client instance that is accessible in a similar fashion to versions prior to v1.
 
 ```py
-import openai
+import openaix
 
 # optional; defaults to `os.environ['OPENAI_API_KEY']`
-openai.api_key = '...'
+openaix.api_key = '...'
 
 # all client options can be configured just like the `OpenAI` instantiation counterpart
-openai.base_url = "https://..."
-openai.default_headers = {"x-foo": "true"}
+openaix.base_url = "https://..."
+openaix.default_headers = {"x-foo": "true"}
 
-completion = openai.chat.completions.create(
+completion = openaix.chat.completions.create(
     model="gpt-4",
     messages=[
         {
@@ -214,7 +214,7 @@ List methods in the OpenAI API are paginated.
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```python
-import openai
+import openaix
 
 client = OpenAI()
 
@@ -232,7 +232,7 @@ Or, asynchronously:
 
 ```python
 import asyncio
-import openai
+import openaix
 
 client = AsyncOpenAI()
 
@@ -283,7 +283,7 @@ for job in first_page.data:
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
 
 ```python
-from openai import OpenAI
+from openaix import OpenAI
 
 client = OpenAI()
 
@@ -305,7 +305,7 @@ Request parameters that correspond to file uploads can be passed as `bytes`, a [
 
 ```python
 from pathlib import Path
-from openai import OpenAI
+from openaix import OpenAI
 
 client = OpenAI()
 
@@ -319,16 +319,16 @@ The async client uses the exact same interface. If you pass a [`PathLike`](https
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `openai.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `openaix.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `openai.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `openaix.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `openai.APIError`.
+All errors inherit from `openaix.APIError`.
 
 ```python
-import openai
-from openai import OpenAI
+import openaix
+from openaix import OpenAI
 
 client = OpenAI()
 
@@ -337,12 +337,12 @@ try:
         model="gpt-3.5-turbo",
         training_file="file-abc123",
     )
-except openai.APIConnectionError as e:
+except openaix.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except openai.RateLimitError as e:
+except openaix.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except openai.APIStatusError as e:
+except openaix.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -370,7 +370,7 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from openai import OpenAI
+from openaix import OpenAI
 
 # Configure the default for all requests:
 client = OpenAI(
@@ -396,7 +396,7 @@ By default requests time out after 10 minutes. You can configure this with a `ti
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from openai import OpenAI
+from openaix import OpenAI
 
 # Configure the default for all requests:
 client = OpenAI(
@@ -454,7 +454,7 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from openai import OpenAI
+from openaix import OpenAI
 
 client = OpenAI()
 response = client.chat.completions.with_raw_response.create(
@@ -470,7 +470,7 @@ completion = response.parse()  # get the object that `chat.completions.create()`
 print(completion)
 ```
 
-These methods return an [`LegacyAPIResponse`](https://github.com/openai/openai-python/tree/main/src/openai/_legacy_response.py) object. This is a legacy class as we're changing it slightly in the next major version.
+These methods return an [`LegacyAPIResponse`](https://github.com/openaix/openaix-python/tree/main/src/openaix/_legacy_response.py) object. This is a legacy class as we're changing it slightly in the next major version.
 
 For the sync client this will mostly be the same with the exception
 of `content` & `text` will be methods instead of properties. In the
@@ -485,7 +485,7 @@ The above interface eagerly reads the full response body when you make the reque
 
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
-As such, `.with_streaming_response` methods return a different [`APIResponse`](https://github.com/openai/openai-python/tree/main/src/openai/_response.py) object, and the async client returns an [`AsyncAPIResponse`](https://github.com/openai/openai-python/tree/main/src/openai/_response.py) object.
+As such, `.with_streaming_response` methods return a different [`APIResponse`](https://github.com/openaix/openaix-python/tree/main/src/openaix/_response.py) object, and the async client returns an [`AsyncAPIResponse`](https://github.com/openaix/openaix-python/tree/main/src/openaix/_response.py) object.
 
 ```python
 with client.chat.completions.with_streaming_response.create(
@@ -549,7 +549,7 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 - Additional [advanced](https://www.python-httpx.org/advanced/#client-instances) functionality
 
 ```python
-from openai import OpenAI, DefaultHttpxClient
+from openaix import OpenAI, DefaultHttpxClient
 
 client = OpenAI(
     # Or use the `OPENAI_BASE_URL` env var
@@ -567,7 +567,7 @@ By default the library closes underlying HTTP connections whenever the client is
 
 ## Microsoft Azure OpenAI
 
-To use this library with [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/overview), use the `AzureOpenAI`
+To use this library with [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openaix/overview), use the `AzureOpenAI`
 class instead of the `OpenAI` class.
 
 > [!IMPORTANT]
@@ -575,14 +575,14 @@ class instead of the `OpenAI` class.
 > won't always be correct.
 
 ```py
-from openai import AzureOpenAI
+from openaix import AzureOpenAI
 
 # gets the API Key from environment variable AZURE_OPENAI_API_KEY
 client = AzureOpenAI(
-    # https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#rest-api-versioning
+    # https://learn.microsoft.com/en-us/azure/ai-services/openaix/reference#rest-api-versioning
     api_version="2023-07-01-preview",
-    # https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/create-resource?pivots=web-portal#create-a-resource
-    azure_endpoint="https://example-endpoint.openai.azure.com",
+    # https://learn.microsoft.com/en-us/azure/cognitive-services/openaix/how-to/create-resource?pivots=web-portal#create-a-resource
+    azure_endpoint="https://example-endpoint.openaix.azure.com",
 )
 
 completion = client.chat.completions.create(
@@ -605,7 +605,7 @@ In addition to the options provided in the base `OpenAI` client, the following o
 - `azure_ad_token` (or the `AZURE_OPENAI_AD_TOKEN` environment variable)
 - `azure_ad_token_provider`
 
-An example of using the client with Azure Active Directory can be found [here](https://github.com/openai/openai-python/blob/main/examples/azure_ad.py).
+An example of using the client with Azure Active Directory can be found [here](https://github.com/openaix/openaix-python/blob/main/examples/azure_ad.py).
 
 ## Versioning
 
@@ -617,7 +617,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/openai/openai-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/openaix/openaix-python/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 

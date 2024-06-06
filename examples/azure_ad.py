@@ -1,8 +1,9 @@
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 
-from openai import AzureOpenAI
+from openaix import AzureOpenAI
 
-token_provider = get_bearer_token_provider(DefaultAzureCredential(), "https://cognitiveservices.azure.com/.default")
+token_provider = get_bearer_token_provider(
+    DefaultAzureCredential(), "https://cognitiveservices.azure.com/.default")
 
 
 # may change in the future

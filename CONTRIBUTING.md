@@ -32,7 +32,7 @@ $ pip install -r requirements-dev.lock
 ## Modifying/Adding code
 
 Most of the SDK is generated code, and any modified code will be overridden on the next generation. The
-`src/openai/lib/` and `examples/` directories are exceptions and will never be overridden.
+`src/openaix/lib/` and `examples/` directories are exceptions and will never be overridden.
 
 ## Adding and running examples
 
@@ -117,7 +117,7 @@ the changes aren't made through the automated pipeline, you may want to make rel
 
 ### Publish with a GitHub workflow
 
-You can release to package managers by using [the `Publish PyPI` GitHub action](https://www.github.com/openai/openai-python/actions/workflows/publish-pypi.yml). This requires a setup organization or repository secret to be set up.
+You can release to package managers by using [the `Publish PyPI` GitHub action](https://www.github.com/openaix/openaix-python/actions/workflows/publish-pypi.yml). This requires a setup organization or repository secret to be set up.
 
 ### Publish manually
 

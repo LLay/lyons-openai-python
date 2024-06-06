@@ -17,9 +17,9 @@ class FileCreateParams(TypedDict, total=False):
     """The intended purpose of the uploaded file.
 
     Use "fine-tune" for
-    [Fine-tuning](https://platform.openai.com/docs/api-reference/fine-tuning) and
+    [Fine-tuning](https://platform.openaix.com/docs/api-reference/fine-tuning) and
     "assistants" for
-    [Assistants](https://platform.openai.com/docs/api-reference/assistants) and
-    [Messages](https://platform.openai.com/docs/api-reference/messages). This allows
+    [Assistants](https://platform.openaix.com/docs/api-reference/assistants) and
+    [Messages](https://platform.openaix.com/docs/api-reference/messages). This allows
     us to validate the format of the uploaded file is correct for fine-tuning.
     """

@@ -62,7 +62,7 @@ class Translations(SyncAPIResource):
 
           prompt: An optional text to guide the model's style or continue a previous audio
               segment. The
-              [prompt](https://platform.openai.com/docs/guides/speech-to-text/prompting)
+              [prompt](https://platform.openaix.com/docs/guides/speech-to-text/prompting)
               should be in English.
 
           response_format: The format of the transcript output, in one of these options: `json`, `text`,
@@ -91,15 +91,18 @@ class Translations(SyncAPIResource):
                 "temperature": temperature,
             }
         )
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        files = extract_files(
+            cast(Mapping[str, object], body), paths=[["file"]])
         if files:
             # It should be noted that the actual Content-Type header that will be
             # sent to the server will contain a `boundary` parameter, e.g.
             # multipart/form-data; boundary=---abc--
-            extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+            extra_headers = {
+                "Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
             "/audio/translations",
-            body=maybe_transform(body, translation_create_params.TranslationCreateParams),
+            body=maybe_transform(
+                body, translation_create_params.TranslationCreateParams),
             files=files,
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -144,7 +147,7 @@ class AsyncTranslations(AsyncAPIResource):
 
           prompt: An optional text to guide the model's style or continue a previous audio
               segment. The
-              [prompt](https://platform.openai.com/docs/guides/speech-to-text/prompting)
+              [prompt](https://platform.openaix.com/docs/guides/speech-to-text/prompting)
               should be in English.
 
           response_format: The format of the transcript output, in one of these options: `json`, `text`,
@@ -173,12 +176,14 @@ class AsyncTranslations(AsyncAPIResource):
                 "temperature": temperature,
             }
         )
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        files = extract_files(
+            cast(Mapping[str, object], body), paths=[["file"]])
         if files:
             # It should be noted that the actual Content-Type header that will be
             # sent to the server will contain a `boundary` parameter, e.g.
             # multipart/form-data; boundary=---abc--
-            extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+            extra_headers = {
+                "Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
             "/audio/translations",
             body=await async_maybe_transform(body, translation_create_params.TranslationCreateParams),

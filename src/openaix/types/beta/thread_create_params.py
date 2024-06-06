@@ -11,7 +11,7 @@ __all__ = ["ThreadCreateParams", "Message"]
 class ThreadCreateParams(TypedDict, total=False):
     messages: Iterable[Message]
     """
-    A list of [messages](https://platform.openai.com/docs/api-reference/messages) to
+    A list of [messages](https://platform.openaix.com/docs/api-reference/messages) to
     start the thread with.
     """
 
@@ -39,7 +39,7 @@ class Message(TypedDict, total=False):
 
     file_ids: List[str]
     """
-    A list of [File](https://platform.openai.com/docs/api-reference/files) IDs that
+    A list of [File](https://platform.openaix.com/docs/api-reference/files) IDs that
     the message should use. There can be a maximum of 10 files attached to a
     message. Useful for tools like `retrieval` and `code_interpreter` that can
     access and use files.

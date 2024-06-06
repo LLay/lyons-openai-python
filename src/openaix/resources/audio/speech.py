@@ -44,7 +44,8 @@ class Speech(SyncAPIResource):
         input: str,
         model: Union[str, Literal["tts-1", "tts-1-hd"]],
         voice: Literal["alloy", "echo", "fable", "onyx", "nova", "shimmer"],
-        response_format: Literal["mp3", "opus", "aac", "flac", "wav", "pcm"] | NotGiven = NOT_GIVEN,
+        response_format: Literal["mp3", "opus", "aac",
+                                 "flac", "wav", "pcm"] | NotGiven = NOT_GIVEN,
         speed: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -60,13 +61,13 @@ class Speech(SyncAPIResource):
           input: The text to generate audio for. The maximum length is 4096 characters.
 
           model:
-              One of the available [TTS models](https://platform.openai.com/docs/models/tts):
+              One of the available [TTS models](https://platform.openaix.com/docs/models/tts):
               `tts-1` or `tts-1-hd`
 
           voice: The voice to use when generating the audio. Supported voices are `alloy`,
               `echo`, `fable`, `onyx`, `nova`, and `shimmer`. Previews of the voices are
               available in the
-              [Text to speech guide](https://platform.openai.com/docs/guides/text-to-speech/voice-options).
+              [Text to speech guide](https://platform.openaix.com/docs/guides/text-to-speech/voice-options).
 
           response_format: The format to audio in. Supported formats are `mp3`, `opus`, `aac`, `flac`,
               `wav`, and `pcm`.
@@ -82,7 +83,8 @@ class Speech(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        extra_headers = {"Accept": "application/octet-stream",
+                         **(extra_headers or {})}
         return self._post(
             "/audio/speech",
             body=maybe_transform(
@@ -117,7 +119,8 @@ class AsyncSpeech(AsyncAPIResource):
         input: str,
         model: Union[str, Literal["tts-1", "tts-1-hd"]],
         voice: Literal["alloy", "echo", "fable", "onyx", "nova", "shimmer"],
-        response_format: Literal["mp3", "opus", "aac", "flac", "wav", "pcm"] | NotGiven = NOT_GIVEN,
+        response_format: Literal["mp3", "opus", "aac",
+                                 "flac", "wav", "pcm"] | NotGiven = NOT_GIVEN,
         speed: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -133,13 +136,13 @@ class AsyncSpeech(AsyncAPIResource):
           input: The text to generate audio for. The maximum length is 4096 characters.
 
           model:
-              One of the available [TTS models](https://platform.openai.com/docs/models/tts):
+              One of the available [TTS models](https://platform.openaix.com/docs/models/tts):
               `tts-1` or `tts-1-hd`
 
           voice: The voice to use when generating the audio. Supported voices are `alloy`,
               `echo`, `fable`, `onyx`, `nova`, and `shimmer`. Previews of the voices are
               available in the
-              [Text to speech guide](https://platform.openai.com/docs/guides/text-to-speech/voice-options).
+              [Text to speech guide](https://platform.openaix.com/docs/guides/text-to-speech/voice-options).
 
           response_format: The format to audio in. Supported formats are `mp3`, `opus`, `aac`, `flac`,
               `wav`, and `pcm`.
@@ -155,7 +158,8 @@ class AsyncSpeech(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        extra_headers = {"Accept": "application/octet-stream",
+                         **(extra_headers or {})}
         return await self._post(
             "/audio/speech",
             body=await async_maybe_transform(

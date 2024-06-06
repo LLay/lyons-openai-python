@@ -68,9 +68,9 @@ class Completions(SyncAPIResource):
 
         Args:
           model: ID of the model to use. You can use the
-              [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+              [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
               see all of your available models, or see our
-              [Model overview](https://platform.openai.com/docs/models/overview) for
+              [Model overview](https://platform.openaix.com/docs/models/overview) for
               descriptions of them.
 
           prompt: The prompt(s) to generate completions for, encoded as a string, array of
@@ -96,7 +96,7 @@ class Completions(SyncAPIResource):
               existing frequency in the text so far, decreasing the model's likelihood to
               repeat the same line verbatim.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           logit_bias: Modify the likelihood of specified tokens appearing in the completion.
 
@@ -123,7 +123,7 @@ class Completions(SyncAPIResource):
 
               The token count of your prompt plus `max_tokens` cannot exceed the model's
               context length.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           n: How many completions to generate for each prompt.
@@ -136,7 +136,7 @@ class Completions(SyncAPIResource):
               whether they appear in the text so far, increasing the model's likelihood to
               talk about new topics.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           seed: If specified, our system will make a best effort to sample deterministically,
               such that repeated requests with the same `seed` and parameters should return
@@ -153,7 +153,7 @@ class Completions(SyncAPIResource):
               [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
               as they become available, with the stream terminated by a `data: [DONE]`
               message.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
 
           suffix: The suffix that comes after a completion of inserted text.
 
@@ -173,7 +173,7 @@ class Completions(SyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -218,9 +218,9 @@ class Completions(SyncAPIResource):
 
         Args:
           model: ID of the model to use. You can use the
-              [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+              [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
               see all of your available models, or see our
-              [Model overview](https://platform.openai.com/docs/models/overview) for
+              [Model overview](https://platform.openaix.com/docs/models/overview) for
               descriptions of them.
 
           prompt: The prompt(s) to generate completions for, encoded as a string, array of
@@ -235,7 +235,7 @@ class Completions(SyncAPIResource):
               [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
               as they become available, with the stream terminated by a `data: [DONE]`
               message.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
 
           best_of: Generates `best_of` completions server-side and returns the "best" (the one with
               the highest log probability per token). Results cannot be streamed.
@@ -253,7 +253,7 @@ class Completions(SyncAPIResource):
               existing frequency in the text so far, decreasing the model's likelihood to
               repeat the same line verbatim.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           logit_bias: Modify the likelihood of specified tokens appearing in the completion.
 
@@ -280,7 +280,7 @@ class Completions(SyncAPIResource):
 
               The token count of your prompt plus `max_tokens` cannot exceed the model's
               context length.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           n: How many completions to generate for each prompt.
@@ -293,7 +293,7 @@ class Completions(SyncAPIResource):
               whether they appear in the text so far, increasing the model's likelihood to
               talk about new topics.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           seed: If specified, our system will make a best effort to sample deterministically,
               such that repeated requests with the same `seed` and parameters should return
@@ -323,7 +323,7 @@ class Completions(SyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -368,9 +368,9 @@ class Completions(SyncAPIResource):
 
         Args:
           model: ID of the model to use. You can use the
-              [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+              [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
               see all of your available models, or see our
-              [Model overview](https://platform.openai.com/docs/models/overview) for
+              [Model overview](https://platform.openaix.com/docs/models/overview) for
               descriptions of them.
 
           prompt: The prompt(s) to generate completions for, encoded as a string, array of
@@ -385,7 +385,7 @@ class Completions(SyncAPIResource):
               [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
               as they become available, with the stream terminated by a `data: [DONE]`
               message.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
 
           best_of: Generates `best_of` completions server-side and returns the "best" (the one with
               the highest log probability per token). Results cannot be streamed.
@@ -403,7 +403,7 @@ class Completions(SyncAPIResource):
               existing frequency in the text so far, decreasing the model's likelihood to
               repeat the same line verbatim.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           logit_bias: Modify the likelihood of specified tokens appearing in the completion.
 
@@ -430,7 +430,7 @@ class Completions(SyncAPIResource):
 
               The token count of your prompt plus `max_tokens` cannot exceed the model's
               context length.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           n: How many completions to generate for each prompt.
@@ -443,7 +443,7 @@ class Completions(SyncAPIResource):
               whether they appear in the text so far, increasing the model's likelihood to
               talk about new topics.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           seed: If specified, our system will make a best effort to sample deterministically,
               such that repeated requests with the same `seed` and parameters should return
@@ -473,7 +473,7 @@ class Completions(SyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -501,7 +501,8 @@ class Completions(SyncAPIResource):
         presence_penalty: Optional[float] | NotGiven = NOT_GIVEN,
         seed: Optional[int] | NotGiven = NOT_GIVEN,
         stop: Union[Optional[str], List[str], None] | NotGiven = NOT_GIVEN,
-        stream: Optional[Literal[False]] | Literal[True] | NotGiven = NOT_GIVEN,
+        stream: Optional[Literal[False]
+                         ] | Literal[True] | NotGiven = NOT_GIVEN,
         suffix: Optional[str] | NotGiven = NOT_GIVEN,
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         top_p: Optional[float] | NotGiven = NOT_GIVEN,
@@ -588,9 +589,9 @@ class AsyncCompletions(AsyncAPIResource):
 
         Args:
           model: ID of the model to use. You can use the
-              [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+              [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
               see all of your available models, or see our
-              [Model overview](https://platform.openai.com/docs/models/overview) for
+              [Model overview](https://platform.openaix.com/docs/models/overview) for
               descriptions of them.
 
           prompt: The prompt(s) to generate completions for, encoded as a string, array of
@@ -616,7 +617,7 @@ class AsyncCompletions(AsyncAPIResource):
               existing frequency in the text so far, decreasing the model's likelihood to
               repeat the same line verbatim.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           logit_bias: Modify the likelihood of specified tokens appearing in the completion.
 
@@ -643,7 +644,7 @@ class AsyncCompletions(AsyncAPIResource):
 
               The token count of your prompt plus `max_tokens` cannot exceed the model's
               context length.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           n: How many completions to generate for each prompt.
@@ -656,7 +657,7 @@ class AsyncCompletions(AsyncAPIResource):
               whether they appear in the text so far, increasing the model's likelihood to
               talk about new topics.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           seed: If specified, our system will make a best effort to sample deterministically,
               such that repeated requests with the same `seed` and parameters should return
@@ -673,7 +674,7 @@ class AsyncCompletions(AsyncAPIResource):
               [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
               as they become available, with the stream terminated by a `data: [DONE]`
               message.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
 
           suffix: The suffix that comes after a completion of inserted text.
 
@@ -693,7 +694,7 @@ class AsyncCompletions(AsyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -738,9 +739,9 @@ class AsyncCompletions(AsyncAPIResource):
 
         Args:
           model: ID of the model to use. You can use the
-              [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+              [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
               see all of your available models, or see our
-              [Model overview](https://platform.openai.com/docs/models/overview) for
+              [Model overview](https://platform.openaix.com/docs/models/overview) for
               descriptions of them.
 
           prompt: The prompt(s) to generate completions for, encoded as a string, array of
@@ -755,7 +756,7 @@ class AsyncCompletions(AsyncAPIResource):
               [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
               as they become available, with the stream terminated by a `data: [DONE]`
               message.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
 
           best_of: Generates `best_of` completions server-side and returns the "best" (the one with
               the highest log probability per token). Results cannot be streamed.
@@ -773,7 +774,7 @@ class AsyncCompletions(AsyncAPIResource):
               existing frequency in the text so far, decreasing the model's likelihood to
               repeat the same line verbatim.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           logit_bias: Modify the likelihood of specified tokens appearing in the completion.
 
@@ -800,7 +801,7 @@ class AsyncCompletions(AsyncAPIResource):
 
               The token count of your prompt plus `max_tokens` cannot exceed the model's
               context length.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           n: How many completions to generate for each prompt.
@@ -813,7 +814,7 @@ class AsyncCompletions(AsyncAPIResource):
               whether they appear in the text so far, increasing the model's likelihood to
               talk about new topics.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           seed: If specified, our system will make a best effort to sample deterministically,
               such that repeated requests with the same `seed` and parameters should return
@@ -843,7 +844,7 @@ class AsyncCompletions(AsyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -888,9 +889,9 @@ class AsyncCompletions(AsyncAPIResource):
 
         Args:
           model: ID of the model to use. You can use the
-              [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+              [List models](https://platform.openaix.com/docs/api-reference/models/list) API to
               see all of your available models, or see our
-              [Model overview](https://platform.openai.com/docs/models/overview) for
+              [Model overview](https://platform.openaix.com/docs/models/overview) for
               descriptions of them.
 
           prompt: The prompt(s) to generate completions for, encoded as a string, array of
@@ -905,7 +906,7 @@ class AsyncCompletions(AsyncAPIResource):
               [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
               as they become available, with the stream terminated by a `data: [DONE]`
               message.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_stream_completions).
 
           best_of: Generates `best_of` completions server-side and returns the "best" (the one with
               the highest log probability per token). Results cannot be streamed.
@@ -923,7 +924,7 @@ class AsyncCompletions(AsyncAPIResource):
               existing frequency in the text so far, decreasing the model's likelihood to
               repeat the same line verbatim.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           logit_bias: Modify the likelihood of specified tokens appearing in the completion.
 
@@ -950,7 +951,7 @@ class AsyncCompletions(AsyncAPIResource):
 
               The token count of your prompt plus `max_tokens` cannot exceed the model's
               context length.
-              [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+              [Example Python code](https://cookbook.openaix.com/examples/how_to_count_tokens_with_tiktoken)
               for counting tokens.
 
           n: How many completions to generate for each prompt.
@@ -963,7 +964,7 @@ class AsyncCompletions(AsyncAPIResource):
               whether they appear in the text so far, increasing the model's likelihood to
               talk about new topics.
 
-              [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation/parameter-details)
+              [See more information about frequency and presence penalties.](https://platform.openaix.com/docs/guides/text-generation/parameter-details)
 
           seed: If specified, our system will make a best effort to sample deterministically,
               such that repeated requests with the same `seed` and parameters should return
@@ -993,7 +994,7 @@ class AsyncCompletions(AsyncAPIResource):
 
           user: A unique identifier representing your end-user, which can help OpenAI to monitor
               and detect abuse.
-              [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).
+              [Learn more](https://platform.openaix.com/docs/guides/safety-best-practices/end-user-ids).
 
           extra_headers: Send extra headers
 
@@ -1021,7 +1022,8 @@ class AsyncCompletions(AsyncAPIResource):
         presence_penalty: Optional[float] | NotGiven = NOT_GIVEN,
         seed: Optional[int] | NotGiven = NOT_GIVEN,
         stop: Union[Optional[str], List[str], None] | NotGiven = NOT_GIVEN,
-        stream: Optional[Literal[False]] | Literal[True] | NotGiven = NOT_GIVEN,
+        stream: Optional[Literal[False]
+                         ] | Literal[True] | NotGiven = NOT_GIVEN,
         suffix: Optional[str] | NotGiven = NOT_GIVEN,
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         top_p: Optional[float] | NotGiven = NOT_GIVEN,

@@ -7,15 +7,16 @@ from typing import Any, cast
 
 import pytest
 
-from openai import OpenAI, AsyncOpenAI
+from openaix import OpenAI, AsyncOpenAI
 from tests.utils import assert_matches_type
-from openai.types import Batch
+from openaix.types import Batch
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
 class TestBatches:
-    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: OpenAI) -> None:
@@ -45,7 +46,8 @@ class TestBatches:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         batch = response.parse()
         assert_matches_type(Batch, batch, path=["response"])
 
@@ -57,7 +59,8 @@ class TestBatches:
             input_file_id="string",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             batch = response.parse()
             assert_matches_type(Batch, batch, path=["response"])
@@ -78,7 +81,8 @@ class TestBatches:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         batch = response.parse()
         assert_matches_type(Batch, batch, path=["response"])
 
@@ -88,7 +92,8 @@ class TestBatches:
             "string",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             batch = response.parse()
             assert_matches_type(Batch, batch, path=["response"])
@@ -116,7 +121,8 @@ class TestBatches:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         batch = response.parse()
         assert_matches_type(Batch, batch, path=["response"])
 
@@ -126,7 +132,8 @@ class TestBatches:
             "string",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             batch = response.parse()
             assert_matches_type(Batch, batch, path=["response"])
@@ -142,7 +149,8 @@ class TestBatches:
 
 
 class TestAsyncBatches:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_create(self, async_client: AsyncOpenAI) -> None:
@@ -172,7 +180,8 @@ class TestAsyncBatches:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         batch = response.parse()
         assert_matches_type(Batch, batch, path=["response"])
 
@@ -184,7 +193,8 @@ class TestAsyncBatches:
             input_file_id="string",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             batch = await response.parse()
             assert_matches_type(Batch, batch, path=["response"])
@@ -205,7 +215,8 @@ class TestAsyncBatches:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         batch = response.parse()
         assert_matches_type(Batch, batch, path=["response"])
 
@@ -215,7 +226,8 @@ class TestAsyncBatches:
             "string",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             batch = await response.parse()
             assert_matches_type(Batch, batch, path=["response"])
@@ -243,7 +255,8 @@ class TestAsyncBatches:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         batch = response.parse()
         assert_matches_type(Batch, batch, path=["response"])
 
@@ -253,7 +266,8 @@ class TestAsyncBatches:
             "string",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             batch = await response.parse()
             assert_matches_type(Batch, batch, path=["response"])

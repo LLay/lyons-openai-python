@@ -80,7 +80,8 @@ class Runs(SyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -128,7 +129,7 @@ class Runs(SyncAPIResource):
 
         Args:
           assistant_id: The ID of the
-              [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+              [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
               execute this run.
 
           additional_instructions: Appends additional instructions at the end of the instructions for the run. This
@@ -138,7 +139,7 @@ class Runs(SyncAPIResource):
           additional_messages: Adds additional messages to the thread before creating the run.
 
           instructions: Overrides the
-              [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
+              [instructions](https://platform.openaix.com/docs/api-reference/assistants/createAssistant)
               of the assistant. This is useful for modifying the behavior on a per-run basis.
 
           max_completion_tokens: The maximum number of completion tokens that may be used over the course of the
@@ -158,13 +159,13 @@ class Runs(SyncAPIResource):
               can be a maximum of 64 characters long and values can be a maxium of 512
               characters long.
 
-          model: The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+          model: The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
               be used to execute this run. If a value is provided here, it will override the
               model associated with the assistant. If not, the model associated with the
               assistant will be used.
 
           response_format: Specifies the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -214,7 +215,8 @@ class Runs(SyncAPIResource):
         assistant_id: str,
         stream: Literal[True],
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -261,7 +263,7 @@ class Runs(SyncAPIResource):
 
         Args:
           assistant_id: The ID of the
-              [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+              [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
               execute this run.
 
           stream: If `true`, returns a stream of events that happen during the Run as server-sent
@@ -275,7 +277,7 @@ class Runs(SyncAPIResource):
           additional_messages: Adds additional messages to the thread before creating the run.
 
           instructions: Overrides the
-              [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
+              [instructions](https://platform.openaix.com/docs/api-reference/assistants/createAssistant)
               of the assistant. This is useful for modifying the behavior on a per-run basis.
 
           max_completion_tokens: The maximum number of completion tokens that may be used over the course of the
@@ -295,13 +297,13 @@ class Runs(SyncAPIResource):
               can be a maximum of 64 characters long and values can be a maxium of 512
               characters long.
 
-          model: The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+          model: The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
               be used to execute this run. If a value is provided here, it will override the
               model associated with the assistant. If not, the model associated with the
               assistant will be used.
 
           response_format: Specifies the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -347,7 +349,8 @@ class Runs(SyncAPIResource):
         assistant_id: str,
         stream: bool,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -394,7 +397,7 @@ class Runs(SyncAPIResource):
 
         Args:
           assistant_id: The ID of the
-              [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+              [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
               execute this run.
 
           stream: If `true`, returns a stream of events that happen during the Run as server-sent
@@ -408,7 +411,7 @@ class Runs(SyncAPIResource):
           additional_messages: Adds additional messages to the thread before creating the run.
 
           instructions: Overrides the
-              [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
+              [instructions](https://platform.openaix.com/docs/api-reference/assistants/createAssistant)
               of the assistant. This is useful for modifying the behavior on a per-run basis.
 
           max_completion_tokens: The maximum number of completion tokens that may be used over the course of the
@@ -428,13 +431,13 @@ class Runs(SyncAPIResource):
               can be a maximum of 64 characters long and values can be a maxium of 512
               characters long.
 
-          model: The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+          model: The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
               be used to execute this run. If a value is provided here, it will override the
               model associated with the assistant. If not, the model associated with the
               assistant will be used.
 
           response_format: Specifies the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -479,7 +482,8 @@ class Runs(SyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -510,7 +514,8 @@ class Runs(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         response_format: Optional[AssistantResponseFormatOptionParam] | NotGiven = NOT_GIVEN,
-        stream: Optional[Literal[False]] | Literal[True] | NotGiven = NOT_GIVEN,
+        stream: Optional[Literal[False]
+                         ] | Literal[True] | NotGiven = NOT_GIVEN,
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
         tools: Optional[Iterable[AssistantToolParam]] | NotGiven = NOT_GIVEN,
@@ -523,8 +528,10 @@ class Runs(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Run | Stream[AssistantStreamEvent]:
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._post(
             f"/threads/{thread_id}/runs",
             body=maybe_transform(
@@ -579,10 +586,13 @@ class Runs(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         if not run_id:
-            raise ValueError(f"Expected a non-empty value for `run_id` but received {run_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `run_id` but received {run_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._get(
             f"/threads/{thread_id}/runs/{run_id}",
             options=make_request_options(
@@ -622,13 +632,17 @@ class Runs(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         if not run_id:
-            raise ValueError(f"Expected a non-empty value for `run_id` but received {run_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `run_id` but received {run_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._post(
             f"/threads/{thread_id}/runs/{run_id}",
-            body=maybe_transform({"metadata": metadata}, run_update_params.RunUpdateParams),
+            body=maybe_transform({"metadata": metadata},
+                                 run_update_params.RunUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -679,8 +693,10 @@ class Runs(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._get_api_list(
             f"/threads/{thread_id}/runs",
             page=SyncCursorPage[Run],
@@ -727,10 +743,13 @@ class Runs(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         if not run_id:
-            raise ValueError(f"Expected a non-empty value for `run_id` but received {run_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `run_id` but received {run_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._post(
             f"/threads/{thread_id}/runs/{run_id}/cancel",
             options=make_request_options(
@@ -744,7 +763,8 @@ class Runs(SyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -791,7 +811,7 @@ class Runs(SyncAPIResource):
         """
         A helper to create a run an poll for a terminal state. More information on Run
         lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
         run = self.create(
             thread_id=thread_id,
@@ -832,7 +852,8 @@ class Runs(SyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -885,7 +906,8 @@ class Runs(SyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -938,7 +960,8 @@ class Runs(SyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -984,7 +1007,8 @@ class Runs(SyncAPIResource):
     ) -> AssistantStreamManager[AssistantEventHandler] | AssistantStreamManager[AssistantEventHandlerT]:
         """Create a Run stream"""
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
 
         extra_headers = {
             "OpenAI-Beta": "assistants=v1",
@@ -1036,14 +1060,17 @@ class Runs(SyncAPIResource):
         """
         A helper to poll a run status until it reaches a terminal state. More
         information on Run lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
-        extra_headers = {"X-Stainless-Poll-Helper": "true", **(extra_headers or {})}
+        extra_headers = {"X-Stainless-Poll-Helper": "true",
+                         **(extra_headers or {})}
 
         if is_given(poll_interval_ms):
-            extra_headers["X-Stainless-Custom-Poll-Interval"] = str(poll_interval_ms)
+            extra_headers["X-Stainless-Custom-Poll-Interval"] = str(
+                poll_interval_ms)
 
-        terminal_states = {"requires_action", "cancelled", "completed", "failed", "expired"}
+        terminal_states = {"requires_action",
+                           "cancelled", "completed", "failed", "expired"}
         while True:
             response = self.with_raw_response.retrieve(
                 thread_id=thread_id,
@@ -1074,7 +1101,8 @@ class Runs(SyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -1126,7 +1154,8 @@ class Runs(SyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -1178,7 +1207,8 @@ class Runs(SyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -1224,7 +1254,8 @@ class Runs(SyncAPIResource):
     ) -> AssistantStreamManager[AssistantEventHandler] | AssistantStreamManager[AssistantEventHandlerT]:
         """Create a Run stream"""
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
 
         extra_headers = {
             "OpenAI-Beta": "assistants=v1",
@@ -1384,7 +1415,8 @@ class Runs(SyncAPIResource):
         *,
         thread_id: str,
         tool_outputs: Iterable[run_submit_tool_outputs_params.ToolOutput],
-        stream: Optional[Literal[False]] | Literal[True] | NotGiven = NOT_GIVEN,
+        stream: Optional[Literal[False]
+                         ] | Literal[True] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1393,10 +1425,13 @@ class Runs(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Run | Stream[AssistantStreamEvent]:
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         if not run_id:
-            raise ValueError(f"Expected a non-empty value for `run_id` but received {run_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `run_id` but received {run_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._post(
             f"/threads/{thread_id}/runs/{run_id}/submit_tool_outputs",
             body=maybe_transform(
@@ -1431,7 +1466,7 @@ class Runs(SyncAPIResource):
         """
         A helper to submit a tool output to a run and poll for a terminal run state.
         More information on Run lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
         run = self.submit_tool_outputs(
             run_id=run_id,
@@ -1470,7 +1505,7 @@ class Runs(SyncAPIResource):
         """
         Submit the tool outputs from a previous run and stream the run to a terminal
         state. More information on Run lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
         ...
 
@@ -1492,7 +1527,7 @@ class Runs(SyncAPIResource):
         """
         Submit the tool outputs from a previous run and stream the run to a terminal
         state. More information on Run lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
         ...
 
@@ -1513,13 +1548,15 @@ class Runs(SyncAPIResource):
         """
         Submit the tool outputs from a previous run and stream the run to a terminal
         state. More information on Run lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
         if not run_id:
-            raise ValueError(f"Expected a non-empty value for `run_id` but received {run_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `run_id` but received {run_id!r}")
 
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
 
         extra_headers = {
             "OpenAI-Beta": "assistants=v1",
@@ -1567,7 +1604,8 @@ class AsyncRuns(AsyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -1615,7 +1653,7 @@ class AsyncRuns(AsyncAPIResource):
 
         Args:
           assistant_id: The ID of the
-              [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+              [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
               execute this run.
 
           additional_instructions: Appends additional instructions at the end of the instructions for the run. This
@@ -1625,7 +1663,7 @@ class AsyncRuns(AsyncAPIResource):
           additional_messages: Adds additional messages to the thread before creating the run.
 
           instructions: Overrides the
-              [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
+              [instructions](https://platform.openaix.com/docs/api-reference/assistants/createAssistant)
               of the assistant. This is useful for modifying the behavior on a per-run basis.
 
           max_completion_tokens: The maximum number of completion tokens that may be used over the course of the
@@ -1645,13 +1683,13 @@ class AsyncRuns(AsyncAPIResource):
               can be a maximum of 64 characters long and values can be a maxium of 512
               characters long.
 
-          model: The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+          model: The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
               be used to execute this run. If a value is provided here, it will override the
               model associated with the assistant. If not, the model associated with the
               assistant will be used.
 
           response_format: Specifies the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1701,7 +1739,8 @@ class AsyncRuns(AsyncAPIResource):
         assistant_id: str,
         stream: Literal[True],
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -1748,7 +1787,7 @@ class AsyncRuns(AsyncAPIResource):
 
         Args:
           assistant_id: The ID of the
-              [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+              [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
               execute this run.
 
           stream: If `true`, returns a stream of events that happen during the Run as server-sent
@@ -1762,7 +1801,7 @@ class AsyncRuns(AsyncAPIResource):
           additional_messages: Adds additional messages to the thread before creating the run.
 
           instructions: Overrides the
-              [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
+              [instructions](https://platform.openaix.com/docs/api-reference/assistants/createAssistant)
               of the assistant. This is useful for modifying the behavior on a per-run basis.
 
           max_completion_tokens: The maximum number of completion tokens that may be used over the course of the
@@ -1782,13 +1821,13 @@ class AsyncRuns(AsyncAPIResource):
               can be a maximum of 64 characters long and values can be a maxium of 512
               characters long.
 
-          model: The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+          model: The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
               be used to execute this run. If a value is provided here, it will override the
               model associated with the assistant. If not, the model associated with the
               assistant will be used.
 
           response_format: Specifies the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1834,7 +1873,8 @@ class AsyncRuns(AsyncAPIResource):
         assistant_id: str,
         stream: bool,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -1881,7 +1921,7 @@ class AsyncRuns(AsyncAPIResource):
 
         Args:
           assistant_id: The ID of the
-              [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+              [assistant](https://platform.openaix.com/docs/api-reference/assistants) to use to
               execute this run.
 
           stream: If `true`, returns a stream of events that happen during the Run as server-sent
@@ -1895,7 +1935,7 @@ class AsyncRuns(AsyncAPIResource):
           additional_messages: Adds additional messages to the thread before creating the run.
 
           instructions: Overrides the
-              [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
+              [instructions](https://platform.openaix.com/docs/api-reference/assistants/createAssistant)
               of the assistant. This is useful for modifying the behavior on a per-run basis.
 
           max_completion_tokens: The maximum number of completion tokens that may be used over the course of the
@@ -1915,13 +1955,13 @@ class AsyncRuns(AsyncAPIResource):
               can be a maximum of 64 characters long and values can be a maxium of 512
               characters long.
 
-          model: The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+          model: The ID of the [Model](https://platform.openaix.com/docs/api-reference/models) to
               be used to execute this run. If a value is provided here, it will override the
               model associated with the assistant. If not, the model associated with the
               assistant will be used.
 
           response_format: Specifies the format that the model must output. Compatible with
-              [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) and
+              [GPT-4 Turbo](https://platform.openaix.com/docs/models/gpt-4-and-gpt-4-turbo) and
               all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1966,7 +2006,8 @@ class AsyncRuns(AsyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -1997,7 +2038,8 @@ class AsyncRuns(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         response_format: Optional[AssistantResponseFormatOptionParam] | NotGiven = NOT_GIVEN,
-        stream: Optional[Literal[False]] | Literal[True] | NotGiven = NOT_GIVEN,
+        stream: Optional[Literal[False]
+                         ] | Literal[True] | NotGiven = NOT_GIVEN,
         temperature: Optional[float] | NotGiven = NOT_GIVEN,
         tool_choice: Optional[AssistantToolChoiceOptionParam] | NotGiven = NOT_GIVEN,
         tools: Optional[Iterable[AssistantToolParam]] | NotGiven = NOT_GIVEN,
@@ -2010,8 +2052,10 @@ class AsyncRuns(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Run | AsyncStream[AssistantStreamEvent]:
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._post(
             f"/threads/{thread_id}/runs",
             body=await async_maybe_transform(
@@ -2066,10 +2110,13 @@ class AsyncRuns(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         if not run_id:
-            raise ValueError(f"Expected a non-empty value for `run_id` but received {run_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `run_id` but received {run_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._get(
             f"/threads/{thread_id}/runs/{run_id}",
             options=make_request_options(
@@ -2109,10 +2156,13 @@ class AsyncRuns(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         if not run_id:
-            raise ValueError(f"Expected a non-empty value for `run_id` but received {run_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `run_id` but received {run_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._post(
             f"/threads/{thread_id}/runs/{run_id}",
             body=await async_maybe_transform({"metadata": metadata}, run_update_params.RunUpdateParams),
@@ -2166,8 +2216,10 @@ class AsyncRuns(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return self._get_api_list(
             f"/threads/{thread_id}/runs",
             page=AsyncCursorPage[Run],
@@ -2214,10 +2266,13 @@ class AsyncRuns(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         if not run_id:
-            raise ValueError(f"Expected a non-empty value for `run_id` but received {run_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `run_id` but received {run_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._post(
             f"/threads/{thread_id}/runs/{run_id}/cancel",
             options=make_request_options(
@@ -2231,7 +2286,8 @@ class AsyncRuns(AsyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -2278,7 +2334,7 @@ class AsyncRuns(AsyncAPIResource):
         """
         A helper to create a run an poll for a terminal state. More information on Run
         lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
         run = await self.create(
             thread_id=thread_id,
@@ -2319,7 +2375,8 @@ class AsyncRuns(AsyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -2372,7 +2429,8 @@ class AsyncRuns(AsyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -2425,7 +2483,8 @@ class AsyncRuns(AsyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -2474,7 +2533,8 @@ class AsyncRuns(AsyncAPIResource):
     ):
         """Create a Run stream"""
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
 
         extra_headers = {
             "OpenAI-Beta": "assistants=v1",
@@ -2525,14 +2585,17 @@ class AsyncRuns(AsyncAPIResource):
         """
         A helper to poll a run status until it reaches a terminal state. More
         information on Run lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
-        extra_headers = {"X-Stainless-Poll-Helper": "true", **(extra_headers or {})}
+        extra_headers = {"X-Stainless-Poll-Helper": "true",
+                         **(extra_headers or {})}
 
         if is_given(poll_interval_ms):
-            extra_headers["X-Stainless-Custom-Poll-Interval"] = str(poll_interval_ms)
+            extra_headers["X-Stainless-Custom-Poll-Interval"] = str(
+                poll_interval_ms)
 
-        terminal_states = {"requires_action", "cancelled", "completed", "failed", "expired"}
+        terminal_states = {"requires_action",
+                           "cancelled", "completed", "failed", "expired"}
         while True:
             response = await self.with_raw_response.retrieve(
                 thread_id=thread_id,
@@ -2563,7 +2626,8 @@ class AsyncRuns(AsyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -2615,7 +2679,8 @@ class AsyncRuns(AsyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -2667,7 +2732,8 @@ class AsyncRuns(AsyncAPIResource):
         *,
         assistant_id: str,
         additional_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]] | NotGiven = NOT_GIVEN,
+        additional_messages: Optional[Iterable[run_create_params.AdditionalMessage]
+                                      ] | NotGiven = NOT_GIVEN,
         instructions: Optional[str] | NotGiven = NOT_GIVEN,
         max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
         max_prompt_tokens: Optional[int] | NotGiven = NOT_GIVEN,
@@ -2716,7 +2782,8 @@ class AsyncRuns(AsyncAPIResource):
     ):
         """Create a Run stream"""
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
 
         extra_headers = {
             "OpenAI-Beta": "assistants=v1",
@@ -2875,7 +2942,8 @@ class AsyncRuns(AsyncAPIResource):
         *,
         thread_id: str,
         tool_outputs: Iterable[run_submit_tool_outputs_params.ToolOutput],
-        stream: Optional[Literal[False]] | Literal[True] | NotGiven = NOT_GIVEN,
+        stream: Optional[Literal[False]
+                         ] | Literal[True] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2884,10 +2952,13 @@ class AsyncRuns(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Run | AsyncStream[AssistantStreamEvent]:
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         if not run_id:
-            raise ValueError(f"Expected a non-empty value for `run_id` but received {run_id!r}")
-        extra_headers = {"OpenAI-Beta": "assistants=v1", **(extra_headers or {})}
+            raise ValueError(
+                f"Expected a non-empty value for `run_id` but received {run_id!r}")
+        extra_headers = {"OpenAI-Beta": "assistants=v1",
+                         **(extra_headers or {})}
         return await self._post(
             f"/threads/{thread_id}/runs/{run_id}/submit_tool_outputs",
             body=await async_maybe_transform(
@@ -2922,7 +2993,7 @@ class AsyncRuns(AsyncAPIResource):
         """
         A helper to submit a tool output to a run and poll for a terminal run state.
         More information on Run lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
         run = await self.submit_tool_outputs(
             run_id=run_id,
@@ -2961,7 +3032,7 @@ class AsyncRuns(AsyncAPIResource):
         """
         Submit the tool outputs from a previous run and stream the run to a terminal
         state. More information on Run lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
         ...
 
@@ -2983,7 +3054,7 @@ class AsyncRuns(AsyncAPIResource):
         """
         Submit the tool outputs from a previous run and stream the run to a terminal
         state. More information on Run lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
         ...
 
@@ -3007,13 +3078,15 @@ class AsyncRuns(AsyncAPIResource):
         """
         Submit the tool outputs from a previous run and stream the run to a terminal
         state. More information on Run lifecycles can be found here:
-        https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+        https://platform.openaix.com/docs/assistants/how-it-works/runs-and-run-steps
         """
         if not run_id:
-            raise ValueError(f"Expected a non-empty value for `run_id` but received {run_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `run_id` but received {run_id!r}")
 
         if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
+            raise ValueError(
+                f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
 
         extra_headers = {
             "OpenAI-Beta": "assistants=v1",

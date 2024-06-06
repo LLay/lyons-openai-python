@@ -5,8 +5,8 @@ from typing import Iterator, AsyncIterator
 import httpx
 import pytest
 
-from openai import OpenAI, AsyncOpenAI
-from openai._streaming import Stream, AsyncStream, ServerSentEvent
+from openaix import OpenAI, AsyncOpenAI
+from openaix._streaming import Stream, AsyncStream, ServerSentEvent
 
 
 @pytest.mark.asyncio
@@ -17,7 +17,8 @@ async def test_basic(sync: bool, client: OpenAI, async_client: AsyncOpenAI) -> N
         yield b'data: {"foo":true}\n'
         yield b"\n"
 
-    iterator = make_event_iterator(content=body(), sync=sync, client=client, async_client=async_client)
+    iterator = make_event_iterator(
+        content=body(), sync=sync, client=client, async_client=async_client)
 
     sse = await iter_next(iterator)
     assert sse.event == "completion"
@@ -33,7 +34,8 @@ async def test_data_missing_event(sync: bool, client: OpenAI, async_client: Asyn
         yield b'data: {"foo":true}\n'
         yield b"\n"
 
-    iterator = make_event_iterator(content=body(), sync=sync, client=client, async_client=async_client)
+    iterator = make_event_iterator(
+        content=body(), sync=sync, client=client, async_client=async_client)
 
     sse = await iter_next(iterator)
     assert sse.event is None
@@ -49,7 +51,8 @@ async def test_event_missing_data(sync: bool, client: OpenAI, async_client: Asyn
         yield b"event: ping\n"
         yield b"\n"
 
-    iterator = make_event_iterator(content=body(), sync=sync, client=client, async_client=async_client)
+    iterator = make_event_iterator(
+        content=body(), sync=sync, client=client, async_client=async_client)
 
     sse = await iter_next(iterator)
     assert sse.event == "ping"
@@ -67,7 +70,8 @@ async def test_multiple_events(sync: bool, client: OpenAI, async_client: AsyncOp
         yield b"event: completion\n"
         yield b"\n"
 
-    iterator = make_event_iterator(content=body(), sync=sync, client=client, async_client=async_client)
+    iterator = make_event_iterator(
+        content=body(), sync=sync, client=client, async_client=async_client)
 
     sse = await iter_next(iterator)
     assert sse.event == "ping"
@@ -91,7 +95,8 @@ async def test_multiple_events_with_data(sync: bool, client: OpenAI, async_clien
         yield b'data: {"bar":false}\n'
         yield b"\n"
 
-    iterator = make_event_iterator(content=body(), sync=sync, client=client, async_client=async_client)
+    iterator = make_event_iterator(
+        content=body(), sync=sync, client=client, async_client=async_client)
 
     sse = await iter_next(iterator)
     assert sse.event == "ping"
@@ -116,7 +121,8 @@ async def test_multiple_data_lines_with_empty_line(sync: bool, client: OpenAI, a
         yield b"data: true}\n"
         yield b"\n\n"
 
-    iterator = make_event_iterator(content=body(), sync=sync, client=client, async_client=async_client)
+    iterator = make_event_iterator(
+        content=body(), sync=sync, client=client, async_client=async_client)
 
     sse = await iter_next(iterator)
     assert sse.event == "ping"
@@ -134,7 +140,8 @@ async def test_data_json_escaped_double_new_line(sync: bool, client: OpenAI, asy
         yield b'data: {"foo": "my long\\n\\ncontent"}'
         yield b"\n\n"
 
-    iterator = make_event_iterator(content=body(), sync=sync, client=client, async_client=async_client)
+    iterator = make_event_iterator(
+        content=body(), sync=sync, client=client, async_client=async_client)
 
     sse = await iter_next(iterator)
     assert sse.event == "ping"
@@ -153,7 +160,8 @@ async def test_multiple_data_lines(sync: bool, client: OpenAI, async_client: Asy
         yield b"data: true}\n"
         yield b"\n\n"
 
-    iterator = make_event_iterator(content=body(), sync=sync, client=client, async_client=async_client)
+    iterator = make_event_iterator(
+        content=body(), sync=sync, client=client, async_client=async_client)
 
     sse = await iter_next(iterator)
     assert sse.event == "ping"
@@ -176,7 +184,8 @@ async def test_special_new_line_character(
         yield b'data: {"content":"foo"}\n'
         yield b"\n"
 
-    iterator = make_event_iterator(content=body(), sync=sync, client=client, async_client=async_client)
+    iterator = make_event_iterator(
+        content=body(), sync=sync, client=client, async_client=async_client)
 
     sse = await iter_next(iterator)
     assert sse.event is None
@@ -211,6 +220,7 @@ async def test_multi_byte_character_multiple_chunks(
 
     iterator = make_event_iterator(content=body(), sync=sync, client=client, async_client=async_client)
 
+        
     sse = await iter_next(iterator)
     assert sse.event is None
     assert sse.json() == {"content": "известни"}
@@ -246,3 +256,4 @@ def make_event_iterator(
     return AsyncStream(
         cast_to=object, client=async_client, response=httpx.Response(200, content=to_aiter(content))
     )._iter_events()
+            

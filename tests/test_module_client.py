@@ -1,6 +1,9 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from __future__ import annotations
+from openaix.lib.azure import AzureOpenAI
+from typing import Iterator
+import contextlib
 
 import os as _os
 
@@ -8,8 +11,8 @@ import httpx
 import pytest
 from httpx import URL
 
-import openai
-from openai import DEFAULT_TIMEOUT, DEFAULT_MAX_RETRIES
+import openaix
+from openaix import DEFAULT_TIMEOUT, DEFAULT_MAX_RETRIES
 
 
 def reset_state() -> None:
@@ -36,7 +39,8 @@ def reset_state_fixture() -> None:
 
 def test_base_url_option() -> None:
     assert openai.base_url is None
-    assert openai.completions._client.base_url == URL("https://api.openai.com/v1/")
+    assert openai.completions._client.base_url == URL(
+        "https://api.openai.com/v1/")
 
     openai.base_url = "http://foo.com"
 
@@ -93,12 +97,6 @@ def test_http_client_option() -> None:
     openai.http_client = new_client
 
     assert openai.completions._client._client is new_client
-
-
-import contextlib
-from typing import Iterator
-
-from openai.lib.azure import AzureOpenAI
 
 
 @contextlib.contextmanager

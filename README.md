@@ -19,7 +19,7 @@ The REST API documentation can be found [on platform.openai.com](https://platfor
 
 ```sh
 # install from PyPI
-pip install openai
+pip install openaix
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from openai import OpenAI
+from openaix import OpenAI
 
 client = OpenAI(
     # This is the default and can be omitted
@@ -58,7 +58,7 @@ Simply import `AsyncOpenAI` instead of `OpenAI` and use `await` with each API ca
 ```python
 import os
 import asyncio
-from openai import AsyncOpenAI
+from openaix import AsyncOpenAI
 
 client = AsyncOpenAI(
     # This is the default and can be omitted
@@ -88,7 +88,7 @@ Functionality between the synchronous and asynchronous clients is otherwise iden
 We provide support for streaming responses using Server Side Events (SSE).
 
 ```python
-from openai import OpenAI
+from openaix import OpenAI
 
 client = OpenAI()
 
@@ -104,7 +104,7 @@ for chunk in stream:
 The async client uses the exact same interface.
 
 ```python
-from openai import AsyncOpenAI
+from openaix import AsyncOpenAI
 
 client = AsyncOpenAI()
 
@@ -130,7 +130,7 @@ asyncio.run(main())
 We also expose a global client instance that is accessible in a similar fashion to versions prior to v1.
 
 ```py
-import openai
+import openaix
 
 # optional; defaults to `os.environ['OPENAI_API_KEY']`
 openai.api_key = '...'
@@ -178,7 +178,7 @@ List methods in the OpenAI API are paginated.
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```python
-import openai
+import openaix
 
 client = OpenAI()
 
@@ -196,7 +196,7 @@ Or, asynchronously:
 
 ```python
 import asyncio
-import openai
+import openaix
 
 client = AsyncOpenAI()
 
@@ -247,7 +247,7 @@ for job in first_page.data:
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
 
 ```python
-from openai import OpenAI
+from openaix import OpenAI
 
 client = OpenAI()
 
@@ -269,7 +269,7 @@ Request parameters that correspond to file uploads can be passed as `bytes`, a [
 
 ```python
 from pathlib import Path
-from openai import OpenAI
+from openaix import OpenAI
 
 client = OpenAI()
 
@@ -291,8 +291,8 @@ response), a subclass of `openai.APIStatusError` is raised, containing `status_c
 All errors inherit from `openai.APIError`.
 
 ```python
-import openai
-from openai import OpenAI
+import openaix
+from openaix import OpenAI
 
 client = OpenAI()
 
@@ -334,7 +334,7 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from openai import OpenAI
+from openaix import OpenAI
 
 # Configure the default for all requests:
 client = OpenAI(
@@ -360,7 +360,7 @@ By default requests time out after 10 minutes. You can configure this with a `ti
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from openai import OpenAI
+from openaix import OpenAI
 
 # Configure the default for all requests:
 client = OpenAI(
@@ -418,7 +418,7 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from openai import OpenAI
+from openaix import OpenAI
 
 client = OpenAI()
 response = client.chat.completions.with_raw_response.create(
@@ -479,7 +479,7 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 
 ```python
 import httpx
-from openai import OpenAI
+from openaix import OpenAI
 
 client = OpenAI(
     # Or use the `OPENAI_BASE_URL` env var
@@ -505,7 +505,7 @@ class instead of the `OpenAI` class.
 > won't always be correct.
 
 ```py
-from openai import AzureOpenAI
+from openaix import AzureOpenAI
 
 # gets the API Key from environment variable AZURE_OPENAI_API_KEY
 client = AzureOpenAI(

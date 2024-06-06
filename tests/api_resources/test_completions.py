@@ -7,15 +7,16 @@ from typing import Any, cast
 
 import pytest
 
-from openai import OpenAI, AsyncOpenAI
+from openaix import OpenAI, AsyncOpenAI
 from tests.utils import assert_matches_type
-from openai.types import Completion
+from openaix.types import Completion
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
 class TestCompletions:
-    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create_overload_1(self, client: OpenAI) -> None:
@@ -56,7 +57,8 @@ class TestCompletions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         completion = response.parse()
         assert_matches_type(Completion, completion, path=["response"])
 
@@ -67,7 +69,8 @@ class TestCompletions:
             prompt="This is a test.",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             completion = response.parse()
             assert_matches_type(Completion, completion, path=["response"])
@@ -114,7 +117,8 @@ class TestCompletions:
             stream=True,
         )
 
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         stream = response.parse()
         stream.close()
 
@@ -126,7 +130,8 @@ class TestCompletions:
             stream=True,
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             stream = response.parse()
             stream.close()
@@ -135,7 +140,8 @@ class TestCompletions:
 
 
 class TestAsyncCompletions:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_create_overload_1(self, async_client: AsyncOpenAI) -> None:
@@ -176,7 +182,8 @@ class TestAsyncCompletions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         completion = response.parse()
         assert_matches_type(Completion, completion, path=["response"])
 
@@ -187,7 +194,8 @@ class TestAsyncCompletions:
             prompt="This is a test.",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             completion = await response.parse()
             assert_matches_type(Completion, completion, path=["response"])
@@ -234,7 +242,8 @@ class TestAsyncCompletions:
             stream=True,
         )
 
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         stream = response.parse()
         await stream.close()
 
@@ -246,7 +255,8 @@ class TestAsyncCompletions:
             stream=True,
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             stream = await response.parse()
             await stream.close()

@@ -5,7 +5,7 @@ description = "The official Python library for the openai API"
 readme = "README.md"
 license = "Apache-2.0"
 authors = [
-{ name = "OpenAI", email = "support@openai.com" },
+{ name = "OpenAI", email = "support@openailyon.com" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",
@@ -44,7 +44,7 @@ Homepage = "https://github.com/openai/openai-python"
 Repository = "https://github.com/openai/openai-python"
 
 [project.scripts]
-openai = "openai.cli:main"
+openaix = "openaix.cli:main"
 
 [tool.rye]
 managed = true
@@ -89,7 +89,7 @@ typecheck = { chain = [
   "typecheck:mypy"
 ]}
 "typecheck:pyright" = "pyright"
-"typecheck:verify-types" = "pyright --verifytypes openai --ignoreexternal"
+"typecheck:verify-types" = "pyright --verifytypes openaix --ignoreexternal"
 "typecheck:mypy" = "mypy ."
 
 [build-system]
@@ -102,7 +102,7 @@ include = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/openai"]
+packages = ["src/openaix"]
 
 [tool.black]
 line-length = 120

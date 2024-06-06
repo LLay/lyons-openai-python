@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from openai._utils import PropertyInfo
-from openai._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from openai._models import BaseModel, construct_type
+from openaix._utils import PropertyInfo
+from openaix._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from openaix._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):
@@ -368,7 +368,8 @@ def test_dict_of_union() -> None:
     class Model(BaseModel):
         data: Dict[str, Union[SubModel1, SubModel2]]
 
-    m = Model.construct(data={"hello": {"name": "there"}, "foo": {"foo": "bar"}})
+    m = Model.construct(
+        data={"hello": {"name": "there"}, "foo": {"foo": "bar"}})
     assert len(list(m.data.keys())) == 2
     assert isinstance(m.data["hello"], SubModel1)
     assert m.data["hello"].name == "there"
@@ -412,7 +413,8 @@ def test_union_of_dict() -> None:
     class Model(BaseModel):
         data: Union[Dict[str, SubModel1], Dict[str, SubModel2]]
 
-    m = Model.construct(data={"hello": {"name": "there"}, "foo": {"foo": "bar"}})
+    m = Model.construct(
+        data={"hello": {"name": "there"}, "foo": {"foo": "bar"}})
     assert len(list(m.data.keys())) == 2
     assert isinstance(m.data["hello"], SubModel1)
     assert m.data["hello"].name == "there"
@@ -446,7 +448,8 @@ def test_does_not_coerce_int() -> None:
 
     assert Model.construct(bar=1).bar == 1
     assert Model.construct(bar=10.9).bar == 10.9
-    assert Model.construct(bar="19").bar == "19"  # type: ignore[comparison-overlap]
+    # type: ignore[comparison-overlap]
+    assert Model.construct(bar="19").bar == "19"
     assert Model.construct(bar=False).bar is False
 
 
@@ -599,7 +602,8 @@ def test_discriminated_unions_invalid_data() -> None:
 
     m = construct_type(
         value={"type": "b", "data": "foo"},
-        type_=cast(Any, Annotated[Union[A, B], PropertyInfo(discriminator="type")]),
+        type_=cast(Any, Annotated[Union[A, B],
+                   PropertyInfo(discriminator="type")]),
     )
     assert isinstance(m, B)
     assert m.type == "b"
@@ -607,7 +611,8 @@ def test_discriminated_unions_invalid_data() -> None:
 
     m = construct_type(
         value={"type": "a", "data": 100},
-        type_=cast(Any, Annotated[Union[A, B], PropertyInfo(discriminator="type")]),
+        type_=cast(Any, Annotated[Union[A, B],
+                   PropertyInfo(discriminator="type")]),
     )
     assert isinstance(m, A)
     assert m.type == "a"
@@ -632,7 +637,8 @@ def test_discriminated_unions_unknown_variant() -> None:
 
     m = construct_type(
         value={"type": "c", "data": None, "new_thing": "bar"},
-        type_=cast(Any, Annotated[Union[A, B], PropertyInfo(discriminator="type")]),
+        type_=cast(Any, Annotated[Union[A, B],
+                   PropertyInfo(discriminator="type")]),
     )
 
     # just chooses the first variant
@@ -660,7 +666,8 @@ def test_discriminated_unions_invalid_data_nested_unions() -> None:
 
     m = construct_type(
         value={"type": "b", "data": "foo"},
-        type_=cast(Any, Annotated[Union[Union[A, B], C], PropertyInfo(discriminator="type")]),
+        type_=cast(Any, Annotated[Union[Union[A, B], C],
+                   PropertyInfo(discriminator="type")]),
     )
     assert isinstance(m, B)
     assert m.type == "b"
@@ -668,7 +675,8 @@ def test_discriminated_unions_invalid_data_nested_unions() -> None:
 
     m = construct_type(
         value={"type": "c", "data": "foo"},
-        type_=cast(Any, Annotated[Union[Union[A, B], C], PropertyInfo(discriminator="type")]),
+        type_=cast(Any, Annotated[Union[Union[A, B], C],
+                   PropertyInfo(discriminator="type")]),
     )
     assert isinstance(m, C)
     assert m.type == "c"
@@ -688,7 +696,8 @@ def test_discriminated_unions_with_aliases_invalid_data() -> None:
 
     m = construct_type(
         value={"type": "b", "data": "foo"},
-        type_=cast(Any, Annotated[Union[A, B], PropertyInfo(discriminator="foo_type")]),
+        type_=cast(Any, Annotated[Union[A, B],
+                   PropertyInfo(discriminator="foo_type")]),
     )
     assert isinstance(m, B)
     assert m.foo_type == "b"
@@ -696,7 +705,8 @@ def test_discriminated_unions_with_aliases_invalid_data() -> None:
 
     m = construct_type(
         value={"type": "a", "data": 100},
-        type_=cast(Any, Annotated[Union[A, B], PropertyInfo(discriminator="foo_type")]),
+        type_=cast(Any, Annotated[Union[A, B],
+                   PropertyInfo(discriminator="foo_type")]),
     )
     assert isinstance(m, A)
     assert m.foo_type == "a"
@@ -721,7 +731,8 @@ def test_discriminated_unions_overlapping_discriminators_invalid_data() -> None:
 
     m = construct_type(
         value={"type": "a", "data": "foo"},
-        type_=cast(Any, Annotated[Union[A, B], PropertyInfo(discriminator="type")]),
+        type_=cast(Any, Annotated[Union[A, B],
+                   PropertyInfo(discriminator="type")]),
     )
     assert isinstance(m, B)
     assert m.type == "a"

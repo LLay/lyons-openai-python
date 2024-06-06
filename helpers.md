@@ -15,7 +15,7 @@ You can subscribe to events by creating an event handler class and overloading t
 
 ```python
 from typing_extensions import override
-from openai import AssistantEventHandler
+from openaix import AssistantEventHandler
 
 # First, we create a EventHandler class to define
 # how we want to handle the events in the response stream.

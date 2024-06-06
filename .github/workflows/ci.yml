@@ -11,7 +11,7 @@ jobs:
   lint:
     name: lint
     runs-on: ubuntu-latest
-    if: github.repository == 'openai/openai-python'
+    if: github.repository == 'openaix/openaix-python'
 
     steps:
       - uses: actions/checkout@v4
@@ -38,4 +38,4 @@ jobs:
 
       - name: Ensure importable
         run: |
-          rye run python -c 'import openai'
+          rye run python -c 'import openaix'

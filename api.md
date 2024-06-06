@@ -1,7 +1,7 @@
 # Shared Types
 
 ```python
-from openai.types import ErrorObject, FunctionDefinition, FunctionParameters
+from openaix.types import ErrorObject, FunctionDefinition, FunctionParameters
 ```
 
 # Completions
@@ -9,7 +9,7 @@ from openai.types import ErrorObject, FunctionDefinition, FunctionParameters
 Types:
 
 ```python
-from openai.types import Completion, CompletionChoice, CompletionUsage
+from openaix.types import Completion, CompletionChoice, CompletionUsage
 ```
 
 Methods:
@@ -23,7 +23,7 @@ Methods:
 Types:
 
 ```python
-from openai.types.chat import (
+from openaix.types.chat import (
     ChatCompletion,
     ChatCompletionAssistantMessageParam,
     ChatCompletionChunk,
@@ -55,7 +55,7 @@ Methods:
 Types:
 
 ```python
-from openai.types import CreateEmbeddingResponse, Embedding
+from openaix.types import CreateEmbeddingResponse, Embedding
 ```
 
 Methods:
@@ -67,7 +67,7 @@ Methods:
 Types:
 
 ```python
-from openai.types import FileContent, FileDeleted, FileObject
+from openaix.types import FileContent, FileDeleted, FileObject
 ```
 
 Methods:
@@ -85,7 +85,7 @@ Methods:
 Types:
 
 ```python
-from openai.types import Image, ImagesResponse
+from openaix.types import Image, ImagesResponse
 ```
 
 Methods:
@@ -101,7 +101,7 @@ Methods:
 Types:
 
 ```python
-from openai.types.audio import Transcription
+from openaix.types.audio import Transcription
 ```
 
 Methods:
@@ -113,7 +113,7 @@ Methods:
 Types:
 
 ```python
-from openai.types.audio import Translation
+from openaix.types.audio import Translation
 ```
 
 Methods:
@@ -131,7 +131,7 @@ Methods:
 Types:
 
 ```python
-from openai.types import Moderation, ModerationCreateResponse
+from openaix.types import Moderation, ModerationCreateResponse
 ```
 
 Methods:
@@ -143,7 +143,7 @@ Methods:
 Types:
 
 ```python
-from openai.types import Model, ModelDeleted
+from openaix.types import Model, ModelDeleted
 ```
 
 Methods:
@@ -159,7 +159,7 @@ Methods:
 Types:
 
 ```python
-from openai.types.fine_tuning import FineTuningJob, FineTuningJobEvent
+from openaix.types.fine_tuning import FineTuningJob, FineTuningJobEvent
 ```
 
 Methods:
@@ -177,7 +177,7 @@ Methods:
 Types:
 
 ```python
-from openai.types.beta import (
+from openaix.types.beta import (
     Assistant,
     AssistantDeleted,
     AssistantStreamEvent,
@@ -205,7 +205,7 @@ Methods:
 Types:
 
 ```python
-from openai.types.beta.assistants import AssistantFile, FileDeleteResponse
+from openaix.types.beta.assistants import AssistantFile, FileDeleteResponse
 ```
 
 Methods:
@@ -220,7 +220,7 @@ Methods:
 Types:
 
 ```python
-from openai.types.beta import Thread, ThreadDeleted
+from openaix.types.beta import Thread, ThreadDeleted
 ```
 
 Methods:
@@ -237,7 +237,7 @@ Methods:
 Types:
 
 ```python
-from openai.types.beta.threads import RequiredActionFunctionToolCall, Run, RunStatus
+from openaix.types.beta.threads import RequiredActionFunctionToolCall, Run, RunStatus
 ```
 
 Methods:
@@ -256,7 +256,7 @@ Methods:
 Types:
 
 ```python
-from openai.types.beta.threads.runs import (
+from openaix.types.beta.threads.runs import (
     CodeInterpreterLogs,
     CodeInterpreterOutputImage,
     CodeInterpreterToolCall,
@@ -287,7 +287,7 @@ Methods:
 Types:
 
 ```python
-from openai.types.beta.threads import (
+from openaix.types.beta.threads import (
     Annotation,
     AnnotationDelta,
     FileCitationAnnotation,
@@ -323,7 +323,7 @@ Methods:
 Types:
 
 ```python
-from openai.types.beta.threads.messages import MessageFile
+from openaix.types.beta.threads.messages import MessageFile
 ```
 
 Methods:

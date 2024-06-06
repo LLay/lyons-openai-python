@@ -6,10 +6,10 @@ import httpx
 import pytest
 import pydantic
 
-from openai import OpenAI, BaseModel
-from openai._streaming import Stream
-from openai._base_client import FinalRequestOptions
-from openai._legacy_response import LegacyAPIResponse
+from openaix import OpenAI, BaseModel
+from openaix._streaming import Stream
+from openaix._base_client import FinalRequestOptions
+from openaix._legacy_response import LegacyAPIResponse
 
 
 class PydanticModel(pydantic.BaseModel):
@@ -28,7 +28,7 @@ def test_response_parse_mismatched_basemodel(client: OpenAI) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from openai import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from openaix import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
@@ -54,7 +54,8 @@ class CustomModel(BaseModel):
 
 def test_response_parse_custom_model(client: OpenAI) -> None:
     response = LegacyAPIResponse(
-        raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
+        raw=httpx.Response(200, content=json.dumps(
+            {"foo": "hello!", "bar": 2})),
         client=client,
         stream=False,
         stream_cls=None,
@@ -69,7 +70,8 @@ def test_response_parse_custom_model(client: OpenAI) -> None:
 
 def test_response_parse_annotated_type(client: OpenAI) -> None:
     response = LegacyAPIResponse(
-        raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
+        raw=httpx.Response(200, content=json.dumps(
+            {"foo": "hello!", "bar": 2})),
         client=client,
         stream=False,
         stream_cls=None,
@@ -78,7 +80,8 @@ def test_response_parse_annotated_type(client: OpenAI) -> None:
     )
 
     obj = response.parse(
-        to=cast("type[CustomModel]", Annotated[CustomModel, "random metadata"]),
+        to=cast("type[CustomModel]",
+                Annotated[CustomModel, "random metadata"]),
     )
     assert obj.foo == "hello!"
     assert obj.bar == 2

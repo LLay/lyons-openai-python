@@ -3,8 +3,8 @@ from typing_extensions import Literal
 
 import pytest
 
-from openai._models import FinalRequestOptions
-from openai.lib.azure import AzureOpenAI, AsyncAzureOpenAI
+from openaix._models import FinalRequestOptions
+from openaix.lib.azure import AzureOpenAI, AsyncAzureOpenAI
 
 Client = Union[AzureOpenAI, AsyncAzureOpenAI]
 

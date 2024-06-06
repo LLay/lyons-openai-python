@@ -1,7 +1,7 @@
 import pytest
 
-import openai
-from openai.lib._old_api import APIRemovedInV1
+import openaix
+from openaix.lib._old_api import APIRemovedInV1
 
 
 def test_basic_attribute_access_works() -> None:

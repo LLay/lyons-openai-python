@@ -2,7 +2,7 @@ from typing import Iterator, AsyncIterator
 
 import pytest
 
-from openai._streaming import SSEDecoder
+from openaix._streaming import SSEDecoder
 
 
 @pytest.mark.asyncio

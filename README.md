@@ -19,7 +19,7 @@ The REST API documentation can be found [on platform.openai.com](https://platfor
 
 ```sh
 # install from PyPI
-pip install openai
+pip install openaix
 ```
 
 ## Usage

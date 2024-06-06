@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("openai").setLevel(logging.DEBUG)
+logging.getLogger("openaix").setLevel(logging.DEBUG)
 
 
 @pytest.fixture(scope="session")

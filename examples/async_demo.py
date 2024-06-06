@@ -2,7 +2,7 @@
 
 import asyncio
 
-from openai import AsyncOpenAI
+from openaix import AsyncOpenAI
 
 # gets API Key from environment variable OPENAI_API_KEY
 client = AsyncOpenAI()

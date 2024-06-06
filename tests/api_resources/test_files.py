@@ -9,11 +9,11 @@ import httpx
 import pytest
 from respx import MockRouter
 
-import openai._legacy_response as _legacy_response
-from openai import OpenAI, AsyncOpenAI
+import openaix._legacy_response as _legacy_response
+from openaix import OpenAI, AsyncOpenAI
 from tests.utils import assert_matches_type
-from openai.types import FileObject, FileDeleted
-from openai.pagination import SyncPage, AsyncPage
+from openaix.types import FileObject, FileDeleted
+from openaix.pagination import SyncPage, AsyncPage
 
 # pyright: reportDeprecated=false
 
@@ -21,7 +21,8 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
 class TestFiles:
-    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: OpenAI) -> None:
@@ -39,7 +40,8 @@ class TestFiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         file = response.parse()
         assert_matches_type(FileObject, file, path=["response"])
 
@@ -50,7 +52,8 @@ class TestFiles:
             purpose="fine-tune",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             file = response.parse()
             assert_matches_type(FileObject, file, path=["response"])
@@ -71,7 +74,8 @@ class TestFiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         file = response.parse()
         assert_matches_type(FileObject, file, path=["response"])
 
@@ -81,7 +85,8 @@ class TestFiles:
             "string",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             file = response.parse()
             assert_matches_type(FileObject, file, path=["response"])
@@ -112,7 +117,8 @@ class TestFiles:
         response = client.files.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         file = response.parse()
         assert_matches_type(SyncPage[FileObject], file, path=["response"])
 
@@ -120,7 +126,8 @@ class TestFiles:
     def test_streaming_response_list(self, client: OpenAI) -> None:
         with client.files.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             file = response.parse()
             assert_matches_type(SyncPage[FileObject], file, path=["response"])
@@ -141,7 +148,8 @@ class TestFiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         file = response.parse()
         assert_matches_type(FileDeleted, file, path=["response"])
 
@@ -151,7 +159,8 @@ class TestFiles:
             "string",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             file = response.parse()
             assert_matches_type(FileDeleted, file, path=["response"])
@@ -168,7 +177,8 @@ class TestFiles:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_method_content(self, client: OpenAI, respx_mock: MockRouter) -> None:
-        respx_mock.get("/files/string/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get(
+            "/files/string/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         file = client.files.content(
             "string",
         )
@@ -178,26 +188,31 @@ class TestFiles:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response_content(self, client: OpenAI, respx_mock: MockRouter) -> None:
-        respx_mock.get("/files/string/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get(
+            "/files/string/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         response = client.files.with_raw_response.content(
             "string",
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         file = response.parse()
-        assert_matches_type(_legacy_response.HttpxBinaryResponseContent, file, path=["response"])
+        assert_matches_type(
+            _legacy_response.HttpxBinaryResponseContent, file, path=["response"])
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_streaming_response_content(self, client: OpenAI, respx_mock: MockRouter) -> None:
-        respx_mock.get("/files/string/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get(
+            "/files/string/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.files.with_streaming_response.content(
             "string",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             file = response.parse()
             assert_matches_type(bytes, file, path=["response"])
@@ -229,7 +244,8 @@ class TestFiles:
             )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         file = response.parse()
         assert_matches_type(str, file, path=["response"])
 
@@ -240,7 +256,8 @@ class TestFiles:
                 "string",
             ) as response:
                 assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+                assert response.http_request.headers.get(
+                    "X-Stainless-Lang") == "python"
 
                 file = response.parse()
                 assert_matches_type(str, file, path=["response"])
@@ -257,7 +274,8 @@ class TestFiles:
 
 
 class TestAsyncFiles:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_create(self, async_client: AsyncOpenAI) -> None:
@@ -275,7 +293,8 @@ class TestAsyncFiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         file = response.parse()
         assert_matches_type(FileObject, file, path=["response"])
 
@@ -286,7 +305,8 @@ class TestAsyncFiles:
             purpose="fine-tune",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             file = await response.parse()
             assert_matches_type(FileObject, file, path=["response"])
@@ -307,7 +327,8 @@ class TestAsyncFiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         file = response.parse()
         assert_matches_type(FileObject, file, path=["response"])
 
@@ -317,7 +338,8 @@ class TestAsyncFiles:
             "string",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             file = await response.parse()
             assert_matches_type(FileObject, file, path=["response"])
@@ -348,7 +370,8 @@ class TestAsyncFiles:
         response = await async_client.files.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         file = response.parse()
         assert_matches_type(AsyncPage[FileObject], file, path=["response"])
 
@@ -356,7 +379,8 @@ class TestAsyncFiles:
     async def test_streaming_response_list(self, async_client: AsyncOpenAI) -> None:
         async with async_client.files.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             file = await response.parse()
             assert_matches_type(AsyncPage[FileObject], file, path=["response"])
@@ -377,7 +401,8 @@ class TestAsyncFiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         file = response.parse()
         assert_matches_type(FileDeleted, file, path=["response"])
 
@@ -387,7 +412,8 @@ class TestAsyncFiles:
             "string",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             file = await response.parse()
             assert_matches_type(FileDeleted, file, path=["response"])
@@ -404,7 +430,8 @@ class TestAsyncFiles:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_content(self, async_client: AsyncOpenAI, respx_mock: MockRouter) -> None:
-        respx_mock.get("/files/string/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get(
+            "/files/string/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         file = await async_client.files.content(
             "string",
         )
@@ -414,26 +441,31 @@ class TestAsyncFiles:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_raw_response_content(self, async_client: AsyncOpenAI, respx_mock: MockRouter) -> None:
-        respx_mock.get("/files/string/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get(
+            "/files/string/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         response = await async_client.files.with_raw_response.content(
             "string",
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         file = response.parse()
-        assert_matches_type(_legacy_response.HttpxBinaryResponseContent, file, path=["response"])
+        assert_matches_type(
+            _legacy_response.HttpxBinaryResponseContent, file, path=["response"])
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_content(self, async_client: AsyncOpenAI, respx_mock: MockRouter) -> None:
-        respx_mock.get("/files/string/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get(
+            "/files/string/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.files.with_streaming_response.content(
             "string",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             file = await response.parse()
             assert_matches_type(bytes, file, path=["response"])
@@ -465,7 +497,8 @@ class TestAsyncFiles:
             )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         file = response.parse()
         assert_matches_type(str, file, path=["response"])
 
@@ -476,7 +509,8 @@ class TestAsyncFiles:
                 "string",
             ) as response:
                 assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+                assert response.http_request.headers.get(
+                    "X-Stainless-Lang") == "python"
 
                 file = await response.parse()
                 assert_matches_type(str, file, path=["response"])

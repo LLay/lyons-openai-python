@@ -3,8 +3,8 @@ from typing_extensions import Literal
 
 import pytest
 
-from openai._models import FinalRequestOptions
-from openai.lib.azure import AzureOpenAI, AsyncAzureOpenAI
+from openaix._models import FinalRequestOptions
+from openaix.lib.azure import AzureOpenAI, AsyncAzureOpenAI
 
 Client = Union[AzureOpenAI, AsyncAzureOpenAI]
 
@@ -12,13 +12,13 @@ Client = Union[AzureOpenAI, AsyncAzureOpenAI]
 sync_client = AzureOpenAI(
     api_version="2023-07-01",
     api_key="example API key",
-    azure_endpoint="https://example-resource.azure.openai.com",
+    azure_endpoint="https://example-resource.azure.openaix.com",
 )
 
 async_client = AsyncAzureOpenAI(
     api_version="2023-07-01",
     api_key="example API key",
-    azure_endpoint="https://example-resource.azure.openai.com",
+    azure_endpoint="https://example-resource.azure.openaix.com",
 )
 
 
@@ -33,7 +33,7 @@ def test_implicit_deployment_path(client: Client) -> None:
     )
     assert (
         req.url
-        == "https://example-resource.azure.openai.com/openai/deployments/my-deployment-model/chat/completions?api-version=2023-07-01"
+        == "https://example-resource.azure.openaix.com/openaix/deployments/my-deployment-model/chat/completions?api-version=2023-07-01"
     )
 
 

@@ -1,16 +1,17 @@
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 
-from openai import AzureOpenAI
+from openaix import AzureOpenAI
 
-token_provider = get_bearer_token_provider(DefaultAzureCredential(), "https://cognitiveservices.azure.com/.default")
+token_provider = get_bearer_token_provider(
+    DefaultAzureCredential(), "https://cognitiveservices.azure.com/.default")
 
 
 # may change in the future
-# https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#rest-api-versioning
+# https://learn.microsoft.com/en-us/azure/ai-services/openaix/reference#rest-api-versioning
 api_version = "2023-07-01-preview"
 
-# https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/create-resource?pivots=web-portal#create-a-resource
-endpoint = "https://my-resource.openai.azure.com"
+# https://learn.microsoft.com/en-us/azure/cognitive-services/openaix/how-to/create-resource?pivots=web-portal#create-a-resource
+endpoint = "https://my-resource.openaix.azure.com"
 
 client = AzureOpenAI(
     api_version=api_version,

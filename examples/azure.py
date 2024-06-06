@@ -1,14 +1,14 @@
-from openai import AzureOpenAI
+from openaix import AzureOpenAI
 
 # may change in the future
-# https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#rest-api-versioning
+# https://learn.microsoft.com/en-us/azure/ai-services/openaix/reference#rest-api-versioning
 api_version = "2023-07-01-preview"
 
 # gets the API Key from environment variable AZURE_OPENAI_API_KEY
 client = AzureOpenAI(
     api_version=api_version,
-    # https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/create-resource?pivots=web-portal#create-a-resource
-    azure_endpoint="https://example-endpoint.openai.azure.com",
+    # https://learn.microsoft.com/en-us/azure/cognitive-services/openaix/how-to/create-resource?pivots=web-portal#create-a-resource
+    azure_endpoint="https://example-endpoint.openaix.azure.com",
 )
 
 completion = client.chat.completions.create(
@@ -25,8 +25,8 @@ print(completion.model_dump_json(indent=2))
 
 deployment_client = AzureOpenAI(
     api_version=api_version,
-    # https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/create-resource?pivots=web-portal#create-a-resource
-    azure_endpoint="https://example-resource.azure.openai.com/",
+    # https://learn.microsoft.com/en-us/azure/cognitive-services/openaix/how-to/create-resource?pivots=web-portal#create-a-resource
+    azure_endpoint="https://example-resource.azure.openaix.com/",
     # Navigate to the Azure OpenAI Studio to deploy a model.
     azure_deployment="deployment-name",  # e.g. gpt-35-instant
 )

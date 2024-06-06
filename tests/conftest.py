@@ -7,14 +7,14 @@ from typing import TYPE_CHECKING, Iterator, AsyncIterator
 
 import pytest
 
-from openai import OpenAI, AsyncOpenAI
+from openaix import OpenAI, AsyncOpenAI
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("openai").setLevel(logging.DEBUG)
+logging.getLogger("openaix").setLevel(logging.DEBUG)
 
 
 @pytest.fixture(scope="session")
@@ -33,7 +33,8 @@ api_key = "My API Key"
 def client(request: FixtureRequest) -> Iterator[OpenAI]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
-        raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
+        raise TypeError(
+            f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
     with OpenAI(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
         yield client
@@ -43,7 +44,8 @@ def client(request: FixtureRequest) -> Iterator[OpenAI]:
 async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncOpenAI]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
-        raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
+        raise TypeError(
+            f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
     async with AsyncOpenAI(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
         yield client

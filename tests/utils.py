@@ -8,8 +8,8 @@ from typing import Any, TypeVar, Iterator, cast
 from datetime import date, datetime
 from typing_extensions import Literal, get_args, get_origin, assert_type
 
-from openai._types import NoneType
-from openai._utils import (
+from openaix._types import NoneType
+from openaix._utils import (
     is_dict,
     is_list,
     is_list_type,
@@ -17,8 +17,8 @@ from openai._utils import (
     extract_type_arg,
     is_annotated_type,
 )
-from openai._compat import PYDANTIC_V2, field_outer_type, get_model_fields
-from openai._models import BaseModel
+from openaix._compat import PYDANTIC_V2, field_outer_type, get_model_fields
+from openaix._models import BaseModel
 
 BaseModelT = TypeVar("BaseModelT", bound=BaseModel)
 
@@ -99,7 +99,8 @@ def assert_matches_type(
     elif is_union_type(type_):
         for i, variant in enumerate(get_args(type_)):
             try:
-                assert_matches_type(variant, value, path=[*path, f"variant {i}"])
+                assert_matches_type(variant, value, path=[
+                                    *path, f"variant {i}"])
                 return
             except AssertionError:
                 traceback.print_exc()

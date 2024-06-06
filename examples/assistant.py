@@ -1,9 +1,9 @@
 import time
 
-import openai
+import openaix
 
 # gets API Key from environment variable OPENAI_API_KEY
-client = openai.OpenAI()
+client = openaix.OpenAI()
 
 assistant = client.beta.assistants.create(
     name="Math Tutor",
@@ -37,7 +37,8 @@ while True:
         print("messages: ")
         for message in messages:
             assert message.content[0].type == "text"
-            print({"role": message.role, "message": message.content[0].text.value})
+            print({"role": message.role,
+                  "message": message.content[0].text.value})
 
         client.beta.assistants.delete(assistant.id)
 

@@ -7,15 +7,16 @@ from typing import Any, cast
 
 import pytest
 
-from openai import OpenAI, AsyncOpenAI
+from openaix import OpenAI, AsyncOpenAI
 from tests.utils import assert_matches_type
-from openai.types.audio import Transcription
+from openaix.types.audio import Transcription
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
 class TestTranscriptions:
-    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: OpenAI) -> None:
@@ -46,7 +47,8 @@ class TestTranscriptions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         transcription = response.parse()
         assert_matches_type(Transcription, transcription, path=["response"])
 
@@ -57,16 +59,19 @@ class TestTranscriptions:
             model="whisper-1",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             transcription = response.parse()
-            assert_matches_type(Transcription, transcription, path=["response"])
+            assert_matches_type(
+                Transcription, transcription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncTranscriptions:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_create(self, async_client: AsyncOpenAI) -> None:
@@ -97,7 +102,8 @@ class TestAsyncTranscriptions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert response.http_request.headers.get(
+            "X-Stainless-Lang") == "python"
         transcription = response.parse()
         assert_matches_type(Transcription, transcription, path=["response"])
 
@@ -108,9 +114,11 @@ class TestAsyncTranscriptions:
             model="whisper-1",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+            assert response.http_request.headers.get(
+                "X-Stainless-Lang") == "python"
 
             transcription = await response.parse()
-            assert_matches_type(Transcription, transcription, path=["response"])
+            assert_matches_type(
+                Transcription, transcription, path=["response"])
 
         assert cast(Any, response.is_closed) is True

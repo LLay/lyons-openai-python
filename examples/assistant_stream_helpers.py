@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from typing_extensions import override
 
-import openai
-from openai import AssistantEventHandler
-from openai.types.beta import AssistantStreamEvent
-from openai.types.beta.threads import Text, TextDelta
-from openai.types.beta.threads.runs import RunStep, RunStepDelta
+import openaix
+from openaix import AssistantEventHandler
+from openaix.types.beta import AssistantStreamEvent
+from openaix.types.beta.threads import Text, TextDelta
+from openaix.types.beta.threads.runs import RunStep, RunStepDelta
 
 
 class EventHandler(AssistantEventHandler):
@@ -41,7 +41,7 @@ class EventHandler(AssistantEventHandler):
 
 
 def main() -> None:
-    client = openai.OpenAI()
+    client = openaix.OpenAI()
 
     assistant = client.beta.assistants.create(
         name="Math Tutor",

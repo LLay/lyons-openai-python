@@ -1,14 +1,14 @@
-import openai
+import openaix
 
 # will default to `os.environ['OPENAI_API_KEY']` if not explicitly set
-openai.api_key = "..."
+openaix.api_key = "..."
 
 # all client options can be configured just like the `OpenAI` instantiation counterpart
-openai.base_url = "https://..."
-openai.default_headers = {"x-foo": "true"}
+openaix.base_url = "https://..."
+openaix.default_headers = {"x-foo": "true"}
 
 # all API calls work in the exact same fashion as well
-stream = openai.chat.completions.create(
+stream = openaix.chat.completions.create(
     model="gpt-4",
     messages=[
         {

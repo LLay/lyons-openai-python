@@ -453,7 +453,9 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
                 raise RuntimeError(f"Unexpected JSON data type, {type(json_data)}, cannot merge with `extra_body`")
 
         headers = self._build_headers(options)
+        print("headers", headers)
         params = _merge_mappings(self._custom_query, options.params)
+        print("params", params)
         content_type = headers.get("Content-Type")
 
         # If the given Content-Type header is multipart/form-data then it
@@ -911,11 +913,14 @@ class SyncAPIClient(BaseClient[httpx.Client, Stream[Any]]):
         stream: bool,
         stream_cls: type[_StreamT] | None,
     ) -> ResponseT | _StreamT:
+        print("cast_to", cast_to)
+        print("options", options)
         cast_to = self._maybe_override_cast_to(cast_to, options)
         self._prepare_options(options)
 
         retries = self._remaining_retries(remaining_retries, options)
         request = self._build_request(options)
+        print("request", request)
         self._prepare_request(request)
 
         kwargs: HttpxSendArgs = {}
@@ -923,6 +928,7 @@ class SyncAPIClient(BaseClient[httpx.Client, Stream[Any]]):
             kwargs["auth"] = self.custom_auth
 
         try:
+            print("kwargs", kwargs)
             response = self._client.send(
                 request,
                 stream=stream or self._should_stream_response_body(request=request),
